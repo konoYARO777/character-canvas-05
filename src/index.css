@@ -118,6 +118,7 @@
 
   .label-text {
     @apply text-sm font-bold uppercase tracking-wider mb-2 block;
+    font-family: 'Paperozi', sans-serif;
     color: hsl(var(--label));
   }
 
