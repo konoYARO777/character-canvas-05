@@ -15,9 +15,6 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
   const storiesWithContent = data.stories.filter((s) => s.content.trim());
 
   const hasPersonality = data.personality?.trim();
-  const totalHeight = 1000 + (
-  hasPersonality ? 120 : 0) + (
-  storiesWithContent.length > 0 ? 40 + storiesWithContent.length * 140 : 0);
 
   return (
     <div
