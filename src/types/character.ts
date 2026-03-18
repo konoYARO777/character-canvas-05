@@ -35,7 +35,7 @@ export const DEFAULT_CHARACTER: CharacterData = {
   age: '',
   species: '',
   gender: '',
-  occupation: '학생',
+  occupation: '',
   keywords: '',
   faceImage: null,
   bodyImage: null,
