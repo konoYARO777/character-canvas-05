@@ -109,7 +109,7 @@ const EditorPanel = ({ data, onChange, onExport, exporting }: EditorPanelProps) 
   return (
     <aside className="space-y-4 overflow-y-auto max-h-[calc(100vh-4rem)] pr-1">
       <header>
-        <h1 className="text-xl font-black tracking-tight"> </h1>
+        <h1 className="text-xl font-black tracking-tight">CHARACTER PROFILE MAKER</h1>
         <p className="text-sm text-muted-foreground">캐릭터 프로필 생성기</p>
       </header>
 
