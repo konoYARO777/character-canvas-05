@@ -235,6 +235,7 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
               style={{
                 fontSize: 16,
                 fontWeight: 700,
+                fontFamily: "'Paperozi', sans-serif",
                 color: data.primaryColor,
                 marginBottom: 6
               }}>
