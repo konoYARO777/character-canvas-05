@@ -26,6 +26,7 @@ export interface CharacterData {
   secondaryColor: string;
   characterColors: CharacterColors;
   stories: StorySection[];
+  credit: string;
 }
 
 export const DEFAULT_CHARACTER: CharacterData = {
