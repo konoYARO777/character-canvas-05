@@ -61,7 +61,7 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
 
         {/* Character Color Swatches */}
         <div style={{ padding: 14, border: '2px dashed #f4f4f5', borderRadius: 8 }}>
-          <span style={{ fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', color: data.primaryColor }}>
+          <span style={{ fontSize: 14, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: data.primaryColor }}>
             캐릭터 색상
           </span>
           <div style={{ display: 'flex', gap: 8, marginTop: 8 }}>
@@ -92,7 +92,7 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
         {/* Tags */}
         {tags.length > 0 &&
         <div style={{ padding: 14, border: '2px dashed #f4f4f5', borderRadius: 8 }}>
-            <span style={{ fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', color: data.primaryColor }}>
+            <span style={{ fontSize: 14, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: data.primaryColor }}>
               키워드
             </span>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 8 }}>
@@ -177,7 +177,7 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
           { label: '젠더', value: data.gender }].
           map((item) =>
           <div key={item.label}>
-              <span style={{ fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', color: '#71717a' }}>
+              <span style={{ fontSize: 14, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: '#71717a' }}>
                 {item.label}
               </span>
               <p style={{ fontSize: 17, fontWeight: 700, marginTop: 2 }}>
