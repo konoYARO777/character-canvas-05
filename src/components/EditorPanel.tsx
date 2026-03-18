@@ -17,7 +17,7 @@ function readFileAsDataURL(file: File): Promise<string> {
   });
 }
 
-type SectionKey = 'profile' | 'story' | 'appearance';
+type SectionKey = 'profile' | 'personality' | 'story' | 'appearance';
 
 const EditorPanel = ({ data, onChange, onExport, exporting }: EditorPanelProps) => {
   const [openSections, setOpenSections] = useState<Record<SectionKey, boolean>>({
