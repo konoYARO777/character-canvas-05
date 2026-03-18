@@ -21,7 +21,6 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
       ref={ref}
       style={{
         width: 800,
-        minHeight: totalHeight,
         display: 'grid',
         gridTemplateColumns: '300px 1fr',
         gap: 28,
