@@ -107,7 +107,7 @@
   }
 
   .label-text {
-    @apply text-xs font-semibold uppercase tracking-wider mb-1.5 block;
+    @apply text-sm font-bold uppercase tracking-wider mb-2 block;
     color: hsl(var(--label));
   }
 
