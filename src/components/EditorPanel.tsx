@@ -162,11 +162,7 @@ const EditorPanel = ({ data, onChange, onExport, exporting }: EditorPanelProps) 
               </div>
               <div>
                 <label className="label-text">직업</label>
-                <select className="input-field" value={data.occupation} onChange={(e) => onChange({ occupation: e.target.value })}>
-                  {OCCUPATIONS.map((o) =>
-                <option key={o} value={o}>{o}</option>
-                )}
-                </select>
+                <input type="text" className="input-field" placeholder="직업을 입력하세요" value={data.occupation} onChange={(e) => onChange({ occupation: e.target.value })} />
               </div>
             </div>
 
