@@ -12,6 +12,7 @@ export interface CharacterColors {
 }
 
 export interface CharacterData {
+  personality: string;
   name: string;
   age: string;
   species: string;
