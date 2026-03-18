@@ -23,11 +23,11 @@ const Index = () => {
         backgroundColor: '#ffffff',
       });
       const link = document.createElement('a');
-      link.download = `OC_Profile_${data.name || 'Unnamed'}.png`;
+      link.download = `OC_프로필_${data.name || '미정'}.png`;
       link.href = canvas.toDataURL('image/png');
       link.click();
     } catch (err) {
-      console.error('Export failed', err);
+      console.error('내보내기 실패', err);
     } finally {
       setExporting(false);
     }
@@ -35,7 +35,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen p-4 md:p-8">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[400px_1fr] gap-8">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[380px_1fr] gap-8">
         <EditorPanel
           data={data}
           onChange={handleChange}
@@ -44,7 +44,7 @@ const Index = () => {
         />
 
         <main className="flex justify-center items-start overflow-x-auto">
-          <div className="origin-top scale-[0.4] sm:scale-[0.5] md:scale-[0.6] lg:scale-[0.7] xl:scale-100 transition-transform">
+          <div className="origin-top scale-[0.4] sm:scale-[0.5] md:scale-[0.55] lg:scale-[0.65] xl:scale-90 transition-transform">
             <ProfileCard ref={cardRef} data={data} />
           </div>
         </main>
