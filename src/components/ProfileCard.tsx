@@ -217,6 +217,18 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
           </div>
         </div>
 
+        {/* Personality */}
+        {hasPersonality && (
+          <div style={{ borderTop: '1px solid #f4f4f5', paddingTop: 20 }}>
+            <h3 style={{ fontSize: 16, fontWeight: 700, color: data.primaryColor, marginBottom: 6 }}>
+              성격
+            </h3>
+            <p style={{ fontSize: 13, lineHeight: 1.7, color: '#3f3f46', whiteSpace: 'pre-wrap' }}>
+              {data.personality}
+            </p>
+          </div>
+        )}
+
         {/* Stories */}
         {storiesWithContent.length > 0 && (
           <div style={{ borderTop: '1px solid #f4f4f5', paddingTop: 20 }}>
