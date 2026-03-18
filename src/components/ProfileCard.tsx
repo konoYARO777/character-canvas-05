@@ -124,7 +124,8 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
             <h2
               style={{
                 fontSize: 44,
-                fontWeight: 900,
+                fontWeight: 800,
+                fontFamily: "'Paperozi', sans-serif",
                 letterSpacing: '-0.03em',
                 textTransform: 'uppercase',
                 lineHeight: 1.1,
