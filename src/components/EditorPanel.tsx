@@ -22,6 +22,7 @@ type SectionKey = 'profile' | 'personality' | 'story' | 'appearance';
 const EditorPanel = ({ data, onChange, onExport, exporting }: EditorPanelProps) => {
   const [openSections, setOpenSections] = useState<Record<SectionKey, boolean>>({
     profile: true,
+    personality: true,
     story: true,
     appearance: true,
   });
