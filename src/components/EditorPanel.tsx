@@ -189,6 +189,19 @@ const EditorPanel = ({ data, onChange, onExport, exporting }: EditorPanelProps) 
           </div>
         )}
 
+        {/* ── 성격 ── */}
+        <SectionHeader label="성격" sectionKey="personality" />
+        {openSections.personality && (
+          <div className="space-y-1.5 animate-in fade-in duration-200">
+            <textarea
+              className="input-field min-h-[120px] resize-y"
+              placeholder="캐릭터의 성격을 자유롭게 서술하세요..."
+              value={data.personality}
+              onChange={(e) => onChange({ personality: e.target.value })}
+            />
+          </div>
+        )}
+
         {/* ── 스토리 ── */}
         <SectionHeader label="스토리" sectionKey="story" />
         {openSections.story && (
