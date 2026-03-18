@@ -177,7 +177,7 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
           { label: '젠더', value: data.gender }].
           map((item) =>
           <div key={item.label}>
-              <span style={{ fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', color: '#71717a' }}>
+              <span style={{ fontSize: 14, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: '#71717a' }}>
                 {item.label}
               </span>
               <p style={{ fontSize: 17, fontWeight: 700, marginTop: 2 }}>
