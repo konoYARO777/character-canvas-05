@@ -29,6 +29,7 @@ export interface CharacterData {
 }
 
 export const DEFAULT_CHARACTER: CharacterData = {
+  personality: '',
   name: '',
   age: '',
   species: '',
