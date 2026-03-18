@@ -17,11 +17,12 @@ function readFileAsDataURL(file: File): Promise<string> {
   });
 }
 
-type SectionKey = 'profile' | 'story' | 'appearance';
+type SectionKey = 'profile' | 'personality' | 'story' | 'appearance';
 
 const EditorPanel = ({ data, onChange, onExport, exporting }: EditorPanelProps) => {
   const [openSections, setOpenSections] = useState<Record<SectionKey, boolean>>({
     profile: true,
+    personality: true,
     story: true,
     appearance: true,
   });
@@ -185,6 +186,19 @@ const EditorPanel = ({ data, onChange, onExport, exporting }: EditorPanelProps) 
                 <input type="color" value={data.secondaryColor} onChange={(e) => onChange({ secondaryColor: e.target.value })} className="w-full h-8 rounded-md cursor-pointer border-0" />
               </div>
             </div>
+          </div>
+        )}
+
+        {/* ── 성격 ── */}
+        <SectionHeader label="성격" sectionKey="personality" />
+        {openSections.personality && (
+          <div className="space-y-1.5 animate-in fade-in duration-200">
+            <textarea
+              className="input-field min-h-[120px] resize-y"
+              placeholder="캐릭터의 성격을 자유롭게 서술하세요..."
+              value={data.personality}
+              onChange={(e) => onChange({ personality: e.target.value })}
+            />
           </div>
         )}
 

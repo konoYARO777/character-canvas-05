@@ -12,6 +12,7 @@ export interface CharacterColors {
 }
 
 export interface CharacterData {
+  personality: string;
   name: string;
   age: string;
   species: string;
@@ -28,6 +29,7 @@ export interface CharacterData {
 }
 
 export const DEFAULT_CHARACTER: CharacterData = {
+  personality: '',
   name: '',
   age: '',
   species: '',

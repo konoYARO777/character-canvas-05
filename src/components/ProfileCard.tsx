@@ -14,7 +14,10 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
   const gallerySlots = Array.from({ length: 4 }, (_, i) => data.galleryImages[i] || null);
   const storiesWithContent = data.stories.filter((s) => s.content.trim());
 
-  const totalHeight = 1000 + (storiesWithContent.length > 0 ? 40 + storiesWithContent.length * 140 : 0);
+  const hasPersonality = data.personality?.trim();
+  const totalHeight = 1000
+    + (hasPersonality ? 120 : 0)
+    + (storiesWithContent.length > 0 ? 40 + storiesWithContent.length * 140 : 0);
 
   return (
     <div
@@ -213,6 +216,18 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
             ))}
           </div>
         </div>
+
+        {/* Personality */}
+        {hasPersonality && (
+          <div style={{ borderTop: '1px solid #f4f4f5', paddingTop: 20 }}>
+            <h3 style={{ fontSize: 16, fontWeight: 700, color: data.primaryColor, marginBottom: 6 }}>
+              성격
+            </h3>
+            <p style={{ fontSize: 13, lineHeight: 1.7, color: '#3f3f46', whiteSpace: 'pre-wrap' }}>
+              {data.personality}
+            </p>
+          </div>
+        )}
 
         {/* Stories */}
         {storiesWithContent.length > 0 && (
