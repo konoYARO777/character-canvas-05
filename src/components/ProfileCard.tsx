@@ -264,22 +264,11 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
           <span style={{ fontSize: 9, color: '#d4d4d8', fontFamily: 'monospace', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
             Generated via Archetype Protocol // {new Date().getFullYear()}
           </span>
-          <div
-            style={{
-              width: 40,
-              height: 40,
-              background: data.primaryColor,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: '#fff',
-              fontWeight: 900,
-              fontSize: 18,
-              borderRadius: 4
-            }}>
-            
-            A
-          </div>
+          {data.credit?.trim() && (
+            <span style={{ fontSize: 11, color: '#a1a1aa' }}>
+              © {data.credit.trim()}
+            </span>
+          )}
         </div>
       </div>
     </div>);

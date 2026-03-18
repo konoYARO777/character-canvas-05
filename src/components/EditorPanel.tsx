@@ -245,6 +245,12 @@ const EditorPanel = ({ data, onChange, onExport, exporting }: EditorPanelProps) 
           </div>
         }
 
+        {/* ── 그림 출처 ── */}
+        <div className="pt-3 border-t border-border">
+          <label className="label-text">그림 출처</label>
+          <input type="text" className="input-field" placeholder="작가 계정명을 입력하세요" value={data.credit} onChange={(e) => onChange({ credit: e.target.value })} />
+        </div>
+
         <button
           onClick={onExport}
           disabled={exporting}

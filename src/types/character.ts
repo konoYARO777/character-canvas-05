@@ -26,6 +26,7 @@ export interface CharacterData {
   secondaryColor: string;
   characterColors: CharacterColors;
   stories: StorySection[];
+  credit: string;
 }
 
 export const DEFAULT_CHARACTER: CharacterData = {
@@ -34,7 +35,7 @@ export const DEFAULT_CHARACTER: CharacterData = {
   age: '',
   species: '',
   gender: '',
-  occupation: '학생',
+  occupation: '',
   keywords: '',
   faceImage: null,
   bodyImage: null,
@@ -53,6 +54,7 @@ export const DEFAULT_CHARACTER: CharacterData = {
     { title: '스토리 2', content: '' },
     { title: '스토리 3', content: '' },
   ],
+  credit: '',
 };
 
 export const OCCUPATIONS = [
