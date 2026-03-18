@@ -14,7 +14,10 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
   const gallerySlots = Array.from({ length: 4 }, (_, i) => data.galleryImages[i] || null);
   const storiesWithContent = data.stories.filter((s) => s.content.trim());
 
-  const totalHeight = 1000 + (storiesWithContent.length > 0 ? 40 + storiesWithContent.length * 140 : 0);
+  const hasPersonality = data.personality?.trim();
+  const totalHeight = 1000
+    + (hasPersonality ? 120 : 0)
+    + (storiesWithContent.length > 0 ? 40 + storiesWithContent.length * 140 : 0);
 
   return (
     <div
