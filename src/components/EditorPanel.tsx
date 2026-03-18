@@ -73,7 +73,7 @@ const EditorPanel = ({ data, onChange, onExport, exporting }: EditorPanelProps) 
   const SectionHeader = ({ label, sectionKey }: {label: string;sectionKey: SectionKey;}) =>
   <button
     onClick={() => toggle(sectionKey)}
-    className="w-full flex items-center justify-between py-2 text-sm font-bold uppercase tracking-wider text-foreground hover:opacity-70 transition-opacity">
+    className="w-full flex items-center justify-between py-2 text-sm font-bold uppercase tracking-wider text-foreground hover:opacity-70 transition-opacity" style={{ fontFamily: "'Paperozi', sans-serif" }}>
     
       {label}
       {openSections[sectionKey] ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
