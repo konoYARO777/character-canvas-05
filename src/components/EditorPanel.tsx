@@ -24,11 +24,11 @@ const EditorPanel = ({ data, onChange, onExport, exporting }: EditorPanelProps) 
     profile: true,
     personality: true,
     story: true,
-    appearance: true,
+    appearance: true
   });
 
   const toggle = (key: SectionKey) =>
-    setOpenSections((prev) => ({ ...prev, [key]: !prev[key] }));
+  setOpenSections((prev) => ({ ...prev, [key]: !prev[key] }));
 
   const handleFace = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -48,11 +48,11 @@ const EditorPanel = ({ data, onChange, onExport, exporting }: EditorPanelProps) 
 
   const handleDrop = useCallback(async (e: React.DragEvent, type: 'face' | 'body' | 'gallery') => {
     e.preventDefault();
-    const files = Array.from(e.dataTransfer.files).filter(f => f.type.startsWith('image/'));
+    const files = Array.from(e.dataTransfer.files).filter((f) => f.type.startsWith('image/'));
     if (!files.length) return;
-    if (type === 'face') onChange({ faceImage: await readFileAsDataURL(files[0]) });
-    else if (type === 'body') onChange({ bodyImage: await readFileAsDataURL(files[0]) });
-    else {
+    if (type === 'face') onChange({ faceImage: await readFileAsDataURL(files[0]) });else
+    if (type === 'body') onChange({ bodyImage: await readFileAsDataURL(files[0]) });else
+    {
       const urls = await Promise.all(files.slice(0, 6).map(readFileAsDataURL));
       onChange({ galleryImages: [...data.galleryImages, ...urls].slice(0, 6) });
     }
@@ -70,75 +70,75 @@ const EditorPanel = ({ data, onChange, onExport, exporting }: EditorPanelProps) 
     onChange({ characterColors: { ...data.characterColors, [key]: value } });
   };
 
-  const SectionHeader = ({ label, sectionKey }: { label: string; sectionKey: SectionKey }) => (
-    <button
-      onClick={() => toggle(sectionKey)}
-      className="w-full flex items-center justify-between py-2 text-sm font-bold uppercase tracking-wider text-foreground hover:opacity-70 transition-opacity"
-    >
+  const SectionHeader = ({ label, sectionKey }: {label: string;sectionKey: SectionKey;}) =>
+  <button
+    onClick={() => toggle(sectionKey)}
+    className="w-full flex items-center justify-between py-2 text-sm font-bold uppercase tracking-wider text-foreground hover:opacity-70 transition-opacity">
+    
       {label}
       {openSections[sectionKey] ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
-    </button>
-  );
+    </button>;
 
-  const UploadZone = ({ label, hasFile, id, onFileChange, dropType }: {
-    label: string; hasFile: boolean; id: string;
-    onFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    dropType: 'face' | 'body' | 'gallery';
-  }) => (
-    <div
-      className="relative p-3 rounded-lg border-2 border-dashed border-muted-foreground/20 hover:border-muted-foreground/40 transition-colors cursor-pointer flex justify-between items-center"
-      onDrop={(e) => handleDrop(e, dropType)}
-      onDragOver={prevent}
-      onClick={() => document.getElementById(id)?.click()}
-    >
+
+  const UploadZone = ({ label, hasFile, id, onFileChange, dropType
+
+
+
+  }: {label: string;hasFile: boolean;id: string;onFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void;dropType: 'face' | 'body' | 'gallery';}) =>
+  <div
+    className="relative p-3 rounded-lg border-2 border-dashed border-muted-foreground/20 hover:border-muted-foreground/40 transition-colors cursor-pointer flex justify-between items-center"
+    onDrop={(e) => handleDrop(e, dropType)}
+    onDragOver={prevent}
+    onClick={() => document.getElementById(id)?.click()}>
+    
       <span className="text-xs font-medium">
         {hasFile ? `✓ ${label}` : label}
       </span>
       <Upload className="w-3.5 h-3.5 text-muted-foreground" />
       <input
-        type="file"
-        id={id}
-        className="hidden"
-        accept="image/*"
-        multiple={dropType === 'gallery'}
-        onChange={onFileChange}
-      />
-    </div>
-  );
+      type="file"
+      id={id}
+      className="hidden"
+      accept="image/*"
+      multiple={dropType === 'gallery'}
+      onChange={onFileChange} />
+    
+    </div>;
+
 
   return (
     <aside className="space-y-4 overflow-y-auto max-h-[calc(100vh-4rem)] pr-1">
       <header>
-        <h1 className="text-xl font-black tracking-tight">ARCHETYPE</h1>
+        <h1 className="text-xl font-black tracking-tight"> </h1>
         <p className="text-sm text-muted-foreground">캐릭터 프로필 생성기</p>
       </header>
 
       <div className="glass-panel p-5 space-y-4">
         {/* ── 프로필 ── */}
         <SectionHeader label="프로필" sectionKey="profile" />
-        {openSections.profile && (
-          <div className="space-y-4 animate-in fade-in duration-200">
+        {openSections.profile &&
+        <div className="space-y-4 animate-in fade-in duration-200">
             {/* Character Colors */}
             <div>
               <label className="label-text">캐릭터 색상</label>
               <div className="grid grid-cols-5 gap-2">
                 {([
-                  ['hair', '머리카락'],
-                  ['eye1', '눈동자1'],
-                  ['eye2', '눈동자2'],
-                  ['skin', '피부색'],
-                  ['other', '기타'],
-                ] as const).map(([key, label]) => (
-                  <div key={key} className="text-center">
+              ['hair', '머리카락'],
+              ['eye1', '눈동자1'],
+              ['eye2', '눈동자2'],
+              ['skin', '피부색'],
+              ['other', '기타']] as
+              const).map(([key, label]) =>
+              <div key={key} className="text-center">
                     <input
-                      type="color"
-                      value={data.characterColors[key]}
-                      onChange={(e) => updateCharColor(key, e.target.value)}
-                      className="w-full h-7 rounded-md cursor-pointer border-0"
-                    />
+                  type="color"
+                  value={data.characterColors[key]}
+                  onChange={(e) => updateCharColor(key, e.target.value)}
+                  className="w-full h-7 rounded-md cursor-pointer border-0" />
+                
                     <span className="text-[10px] text-muted-foreground mt-0.5 block">{label}</span>
                   </div>
-                ))}
+              )}
               </div>
             </div>
 
@@ -163,9 +163,9 @@ const EditorPanel = ({ data, onChange, onExport, exporting }: EditorPanelProps) 
               <div>
                 <label className="label-text">직업</label>
                 <select className="input-field" value={data.occupation} onChange={(e) => onChange({ occupation: e.target.value })}>
-                  {OCCUPATIONS.map((o) => (
-                    <option key={o} value={o}>{o}</option>
-                  ))}
+                  {OCCUPATIONS.map((o) =>
+                <option key={o} value={o}>{o}</option>
+                )}
                 </select>
               </div>
             </div>
@@ -187,78 +187,78 @@ const EditorPanel = ({ data, onChange, onExport, exporting }: EditorPanelProps) 
               </div>
             </div>
           </div>
-        )}
+        }
 
         {/* ── 성격 ── */}
         <SectionHeader label="성격" sectionKey="personality" />
-        {openSections.personality && (
-          <div className="space-y-1.5 animate-in fade-in duration-200">
+        {openSections.personality &&
+        <div className="space-y-1.5 animate-in fade-in duration-200">
             <textarea
-              className="input-field min-h-[120px] resize-y"
-              placeholder="캐릭터의 성격을 자유롭게 서술하세요..."
-              value={data.personality}
-              onChange={(e) => onChange({ personality: e.target.value })}
-            />
+            className="input-field min-h-[120px] resize-y"
+            placeholder="캐릭터의 성격을 자유롭게 서술하세요..."
+            value={data.personality}
+            onChange={(e) => onChange({ personality: e.target.value })} />
+          
           </div>
-        )}
+        }
 
         {/* ── 스토리 ── */}
         <SectionHeader label="스토리" sectionKey="story" />
-        {openSections.story && (
-          <div className="space-y-4 animate-in fade-in duration-200">
-            {data.stories.map((story, i) => (
-              <div key={i} className="space-y-1.5">
+        {openSections.story &&
+        <div className="space-y-4 animate-in fade-in duration-200">
+            {data.stories.map((story, i) =>
+          <div key={i} className="space-y-1.5">
                 <input
-                  type="text"
-                  className="input-field font-semibold"
-                  value={story.title}
-                  onChange={(e) => updateStory(i, 'title', e.target.value)}
-                />
+              type="text"
+              className="input-field font-semibold"
+              value={story.title}
+              onChange={(e) => updateStory(i, 'title', e.target.value)} />
+            
                 <textarea
-                  className="input-field min-h-[100px] resize-y"
-                  placeholder="스토리를 입력하세요..."
-                  value={story.content}
-                  onChange={(e) => updateStory(i, 'content', e.target.value)}
-                />
+              className="input-field min-h-[100px] resize-y"
+              placeholder="스토리를 입력하세요..."
+              value={story.content}
+              onChange={(e) => updateStory(i, 'content', e.target.value)} />
+            
               </div>
-            ))}
+          )}
           </div>
-        )}
+        }
 
         {/* ── 캐릭터 외관 ── */}
         <SectionHeader label="캐릭터 외관" sectionKey="appearance" />
-        {openSections.appearance && (
-          <div className="space-y-2 animate-in fade-in duration-200">
+        {openSections.appearance &&
+        <div className="space-y-2 animate-in fade-in duration-200">
             <UploadZone label="메인 얼굴 이미지" hasFile={!!data.faceImage} id="file-face" onFileChange={handleFace} dropType="face" />
             <UploadZone label="전신 이미지" hasFile={!!data.bodyImage} id="file-body" onFileChange={handleBody} dropType="body" />
             <UploadZone
-              label={data.galleryImages.length ? `기타 이미지 (${data.galleryImages.length})` : '기타 이미지 (복수 선택 가능)'}
-              hasFile={data.galleryImages.length > 0}
-              id="file-extra"
-              onFileChange={handleGallery}
-              dropType="gallery"
-            />
-            {data.galleryImages.length > 0 && (
-              <button
-                onClick={() => onChange({ galleryImages: [] })}
-                className="text-xs text-destructive hover:underline"
-              >
+            label={data.galleryImages.length ? `기타 이미지 (${data.galleryImages.length})` : '기타 이미지 (복수 선택 가능)'}
+            hasFile={data.galleryImages.length > 0}
+            id="file-extra"
+            onFileChange={handleGallery}
+            dropType="gallery" />
+          
+            {data.galleryImages.length > 0 &&
+          <button
+            onClick={() => onChange({ galleryImages: [] })}
+            className="text-xs text-destructive hover:underline">
+            
                 기타 이미지 모두 삭제
               </button>
-            )}
+          }
           </div>
-        )}
+        }
 
         <button
           onClick={onExport}
           disabled={exporting}
-          className="w-full py-3 bg-foreground text-background rounded-lg font-bold text-sm hover:opacity-90 transition-all active:scale-[0.98] disabled:opacity-50"
-        >
+          className="w-full py-3 bg-foreground text-background rounded-lg font-bold text-sm hover:opacity-90 transition-all active:scale-[0.98] disabled:opacity-50">
+          
           {exporting ? '생성 중...' : '이미지로 저장'}
         </button>
       </div>
-    </aside>
-  );
+    </aside>);
+
 };
 
 export default EditorPanel;
