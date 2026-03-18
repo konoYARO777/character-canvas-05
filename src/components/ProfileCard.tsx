@@ -223,7 +223,7 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
             <h3 style={{ fontSize: 16, fontWeight: 700, color: data.primaryColor, marginBottom: 6 }}>
               성격
             </h3>
-            <p style={{ fontSize: 13, lineHeight: 1.7, color: '#3f3f46', whiteSpace: 'pre-wrap' }}>
+            <p style={{ fontSize: 13, lineHeight: 1.7, color: '#3f3f46', whiteSpace: 'pre-wrap', wordBreak: 'break-word', overflowWrap: 'break-word' }}>
               {data.personality}
             </p>
           </div>
