@@ -92,7 +92,7 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
         {/* Tags */}
         {tags.length > 0 &&
         <div style={{ padding: 14, border: '2px dashed #f4f4f5', borderRadius: 8 }}>
-            <span style={{ fontSize: 14, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: data.primaryColor }}>
+            <span style={{ fontSize: 14, fontWeight: 600, fontFamily: "'Paperozi', sans-serif", textTransform: 'uppercase', letterSpacing: '0.05em', color: data.primaryColor }}>
               키워드
             </span>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 8 }}>
