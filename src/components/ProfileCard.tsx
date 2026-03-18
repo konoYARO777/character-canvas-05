@@ -266,7 +266,7 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
           </span>
           {data.credit?.trim() && (
             <span style={{ fontSize: 11, color: '#a1a1aa' }}>
-              © {data.credit.trim()}
+              {data.credit.split(',').map(c => c.trim()).filter(Boolean).map(c => `© ${c}`).join(', ')}
             </span>
           )}
         </div>
