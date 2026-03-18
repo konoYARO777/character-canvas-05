@@ -54,6 +54,7 @@ export const DEFAULT_CHARACTER: CharacterData = {
     { title: '스토리 2', content: '' },
     { title: '스토리 3', content: '' },
   ],
+  credit: '',
 };
 
 export const OCCUPATIONS = [
