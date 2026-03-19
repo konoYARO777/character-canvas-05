@@ -13,7 +13,7 @@ function hexToRgba(hex: string, alpha: number): string {
 }
 
 const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref) => {
-  const tags = data.keywords.split(',').map((t) => t.trim()).filter(Boolean);
+  const tags = data.keywords.split(/[,\n]/).map((t) => t.trim()).filter(Boolean);
   const gallerySlots = Array.from({ length: 4 }, (_, i) => data.galleryImages[i] || null);
   const storiesWithContent = data.stories.filter((s) => s.content.trim());
   const hasPersonality = data.personality?.trim();

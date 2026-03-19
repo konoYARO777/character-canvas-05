@@ -18,7 +18,7 @@ const EXPORT_GAP = 32;
 const LEFT_COLUMN_WIDTH = 420;
 
 const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) => {
-  const tags = data.keywords.split(',').map((tag) => tag.trim()).filter(Boolean);
+  const tags = data.keywords.split(/[,\n]/).map((tag) => tag.trim()).filter(Boolean);
   const credits = data.credit.split(',').map((credit) => credit.trim()).filter(Boolean);
   const gallerySlots = Array.from({ length: 4 }, (_, index) => data.galleryImages[index] || null);
   const storiesWithContent = data.stories.filter((story) => story.content.trim());
