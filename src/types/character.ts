@@ -26,6 +26,7 @@ export interface CharacterData {
   secondaryColor: string;
   tertiaryColor: string;
   dividerColor: string;
+  imageBgColor: string;
   characterColors: CharacterColors;
   stories: StorySection[];
   credit: string;
