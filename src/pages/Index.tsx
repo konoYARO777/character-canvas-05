@@ -2,38 +2,47 @@ import { useCallback, useRef, useState } from 'react';
 import html2canvas from 'html2canvas';
 import EditorPanel from '@/components/EditorPanel';
 import ProfileCard from '@/components/ProfileCard';
+import ExportCard from '@/components/ExportCard';
 import { CharacterData, DEFAULT_CHARACTER } from '@/types/character';
 
 const Index = () => {
   const [data, setData] = useState<CharacterData>(DEFAULT_CHARACTER);
   const [exporting, setExporting] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
+  const exportRef = useRef<HTMLDivElement>(null);
 
   const handleChange = useCallback((partial: Partial<CharacterData>) => {
     setData((prev) => ({ ...prev, ...partial }));
   }, []);
 
   const handleExport = useCallback(async () => {
-    if (!cardRef.current) return;
+    if (!exportRef.current) return;
     setExporting(true);
     try {
-      cardRef.current.classList.add('export-mode');
-      // Allow reflow
-      await new Promise((r) => setTimeout(r, 100));
-      const canvas = await html2canvas(cardRef.current, {
+      // Make visible for capture
+      exportRef.current.style.position = 'fixed';
+      exportRef.current.style.left = '-9999px';
+      exportRef.current.style.top = '0';
+      exportRef.current.style.display = 'block';
+
+      // Wait for fonts
+      await document.fonts.ready;
+      // Small delay for images/reflow
+      await new Promise((r) => setTimeout(r, 200));
+
+      const canvas = await html2canvas(exportRef.current, {
         scale: 3,
         useCORS: true,
         backgroundColor: '#ffffff',
         logging: false,
       });
-      cardRef.current.classList.remove('export-mode');
+
       const link = document.createElement('a');
       link.download = `OC_프로필_${data.name || '미정'}.png`;
       link.href = canvas.toDataURL('image/png');
       link.click();
     } catch (err) {
       console.error('내보내기 실패', err);
-      cardRef.current?.classList.remove('export-mode');
     } finally {
       setExporting(false);
     }
@@ -55,6 +64,9 @@ const Index = () => {
           </div>
         </main>
       </div>
+
+      {/* Hidden export-only container */}
+      <ExportCard ref={exportRef} data={data} />
     </div>
   );
 };
