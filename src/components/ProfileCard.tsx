@@ -21,6 +21,7 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
   const pc = data.primaryColor;
   const sc2 = data.tertiaryColor;
   const dc = data.dividerColor;
+  const ibg = data.imageBgColor;
   const bgTint = hexToRgba(data.secondaryColor, 0.2);
   const dividerStyle = `1px solid ${dc}`;
 
@@ -45,7 +46,7 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
 
       {/* Row 1 Left: Body Image */}
       <div style={{ gridColumn: 1, gridRow: 1, paddingBottom: 16 }}>
-        <div style={{ height: '100%', minHeight: 720, background: dc, borderRadius: 8, overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', outline: '1px solid rgba(0,0,0,0.05)', outlineOffset: -1 }}>
+        <div style={{ height: '100%', minHeight: 720, background: ibg, borderRadius: 8, overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', outline: '1px solid rgba(0,0,0,0.05)', outlineOffset: -1 }}>
           {data.bodyImage ?
             <img src={data.bodyImage} alt="전신" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} /> :
             <span style={{ fontSize: 10, color: '#a1a1aa', textTransform: 'uppercase', letterSpacing: '0.1em' }}>전신 이미지</span>
@@ -87,7 +88,7 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
           <span style={{ fontSize: 14, fontWeight: 600, fontFamily: "'Paperozi', sans-serif", textTransform: 'uppercase', letterSpacing: '0.05em', color: pc, marginBottom: 12, display: 'block' }}>갤러리</span>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, flex: 1 }}>
             {gallerySlots.map((img, i) =>
-              <div key={i} style={{ background: dc, borderRadius: 8, overflow: 'hidden', outline: '1px solid rgba(0,0,0,0.05)', outlineOffset: -1 }}>
+              <div key={i} style={{ background: ibg, borderRadius: 8, overflow: 'hidden', outline: '1px solid rgba(0,0,0,0.05)', outlineOffset: -1 }}>
                 {img && <img src={img} alt={`갤러리 ${i + 1}`} style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center' }} />}
               </div>
             )}

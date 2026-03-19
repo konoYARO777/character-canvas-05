@@ -27,6 +27,7 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
   const pc = data.primaryColor;
   const sc2 = data.tertiaryColor;
   const dc = data.dividerColor;
+  const ibg = data.imageBgColor;
   const bgTint = hexToRgba(data.secondaryColor, 0.2);
   const dividerStyle = `1px solid ${dc}`;
 
@@ -87,7 +88,7 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
       >
         {/* Row 1 Left: Body Image */}
         <div style={{ gridColumn: 1, gridRow: 1, paddingBottom: 18 }}>
-          <div style={{ width: LEFT_COLUMN_WIDTH, height: '100%', minHeight: 1008, background: dc, borderRadius: 8, overflow: 'hidden', outline: '1px solid rgba(0,0,0,0.05)', outlineOffset: -1, textAlign: 'center' }}>
+          <div style={{ width: LEFT_COLUMN_WIDTH, height: '100%', minHeight: 1008, background: ibg, borderRadius: 8, overflow: 'hidden', outline: '1px solid rgba(0,0,0,0.05)', outlineOffset: -1, textAlign: 'center' }}>
             {data.bodyImage ? (
               <img src={data.bodyImage} alt="전신" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
             ) : (
@@ -135,7 +136,7 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
             <span style={{ ...sectionHeadingStyle, fontSize: 14, marginBottom: 12 }}>갤러리</span>
             <div className="gallery-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', columnGap: 16, rowGap: 16 }}>
               {gallerySlots.map((image, index) => (
-                <div key={index} style={{ width: '100%', height: 318, background: dc, borderRadius: 8, overflow: 'hidden', outline: '1px solid rgba(0,0,0,0.05)', outlineOffset: -1 }}>
+                <div key={index} style={{ width: '100%', height: 318, background: ibg, borderRadius: 8, overflow: 'hidden', outline: '1px solid rgba(0,0,0,0.05)', outlineOffset: -1 }}>
                   {image && <img src={image} alt={`갤러리 ${index + 1}`} style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center', display: 'block' }} />}
                 </div>
               ))}
