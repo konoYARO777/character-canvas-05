@@ -74,7 +74,7 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
           <div
             style={{
               width: LEFT_COLUMN_WIDTH,
-              height: 1008,
+              aspectRatio: '3 / 4',
               background: '#f4f4f5',
               borderRadius: 8,
               overflow: 'hidden',
