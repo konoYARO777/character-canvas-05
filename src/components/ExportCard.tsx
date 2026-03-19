@@ -87,7 +87,7 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
               <img
                 src={data.bodyImage}
                 alt="전신"
-                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center', display: 'block' }}
               />
             ) : (
               <div style={{ paddingTop: 492 }}>
@@ -131,13 +131,16 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
                 <span
                   key={index}
                   style={{
-                    display: 'inline-block',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                     padding: '5px 11px',
                     background: data.primaryColor,
                     color: '#ffffff',
                     borderRadius: 999,
                     fontSize: 12,
                     fontWeight: 700,
+                    lineHeight: 1.2,
                     marginRight: 8,
                     marginBottom: 8,
                   }}
@@ -206,7 +209,7 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
                 <img
                   src={data.faceImage}
                   alt="얼굴"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                  style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center', display: 'block' }}
                 />
               ) : (
                 <div style={{ paddingTop: 62 }}>
@@ -280,7 +283,7 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
                     <img
                       src={image}
                       alt={`갤러리 ${index + 1}`}
-                      style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                      style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center', display: 'block' }}
                     />
                   )}
                 </div>

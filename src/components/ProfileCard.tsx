@@ -51,7 +51,7 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
           }}>
           
           {data.bodyImage ?
-          <img src={data.bodyImage} alt="전신" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> :
+          <img src={data.bodyImage} alt="전신" style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center' }} /> :
 
           <span style={{ fontSize: 10, color: '#a1a1aa', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
               전신 이미지
@@ -100,14 +100,17 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
             <span
               key={i}
               style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
                 padding: '4px 10px',
                 background: data.primaryColor,
                 color: '#fff',
                 borderRadius: 20,
                 fontSize: 11,
-                fontWeight: 600
+                fontWeight: 600,
+                lineHeight: 1.2
               }}>
-              
                   {tag}
                 </span>
             )}
@@ -154,7 +157,7 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
             }}>
             
             {data.faceImage ?
-            <img src={data.faceImage} alt="얼굴" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> :
+            <img src={data.faceImage} alt="얼굴" style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center' }} /> :
 
             <span style={{ fontSize: 9, color: '#a1a1aa' }}>얼굴</span>
             }
@@ -207,7 +210,7 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
               }}>
               
                 {img &&
-              <img src={img} alt={`갤러리 ${i + 1}`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <img src={img} alt={`갤러리 ${i + 1}`} style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center' }} />
               }
               </div>
             )}
