@@ -33,15 +33,33 @@ const EditorPanel = ({ data, onChange, onExport, exporting }: EditorPanelProps) 
   const toggle = (key: SectionKey) =>
   setOpenSections((prev) => ({ ...prev, [key]: !prev[key] }));
 
+  const openCropper = useCallback(async (file: File, target: 'face' | 'body') => {
+    const url = await readFileAsDataURL(file);
+    setCropSrc(url);
+    setCropTarget(target);
+  }, []);
+
+  const handleCropComplete = useCallback((croppedDataUrl: string) => {
+    if (cropTarget === 'face') onChange({ faceImage: croppedDataUrl });
+    else if (cropTarget === 'body') onChange({ bodyImage: croppedDataUrl });
+    setCropSrc(null);
+    setCropTarget(null);
+  }, [cropTarget, onChange]);
+
+  const handleCropCancel = useCallback(() => {
+    setCropSrc(null);
+    setCropTarget(null);
+  }, []);
+
   const handleFace = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (file) onChange({ faceImage: await readFileAsDataURL(file) });
-  }, [onChange]);
+    if (file) openCropper(file, 'face');
+  }, [openCropper]);
 
   const handleBody = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (file) onChange({ bodyImage: await readFileAsDataURL(file) });
-  }, [onChange]);
+    if (file) openCropper(file, 'body');
+  }, [openCropper]);
 
   const handleGallery = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files || []).slice(0, 6);
