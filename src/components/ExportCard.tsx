@@ -131,13 +131,16 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
                 <span
                   key={index}
                   style={{
-                    display: 'inline-block',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                     padding: '5px 11px',
                     background: data.primaryColor,
                     color: '#ffffff',
                     borderRadius: 999,
                     fontSize: 12,
                     fontWeight: 700,
+                    lineHeight: 1.2,
                     marginRight: 8,
                     marginBottom: 8,
                   }}
