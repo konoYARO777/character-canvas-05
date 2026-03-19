@@ -5,6 +5,33 @@ import ProfileCard from '@/components/ProfileCard';
 import ExportCard from '@/components/ExportCard';
 import { CharacterData, DEFAULT_CHARACTER } from '@/types/character';
 
+const EXPORT_WIDTH = 1200;
+
+const waitForExportAssets = async (container: HTMLElement) => {
+  const images = Array.from(container.querySelectorAll('img'));
+
+  await Promise.all(
+    images.map(
+      (image) =>
+        new Promise<void>((resolve) => {
+          if (image.complete) {
+            resolve();
+            return;
+          }
+
+          const handleDone = () => resolve();
+          image.addEventListener('load', handleDone, { once: true });
+          image.addEventListener('error', handleDone, { once: true });
+        }),
+    ),
+  );
+};
+
+const waitForRenderStability = async () => {
+  await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
+  await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
+};
+
 const Index = () => {
   const [data, setData] = useState<CharacterData>(DEFAULT_CHARACTER);
   const [exporting, setExporting] = useState(false);
@@ -17,24 +44,25 @@ const Index = () => {
 
   const handleExport = useCallback(async () => {
     if (!exportRef.current) return;
+
     setExporting(true);
+
     try {
-      // Make visible for capture
-      exportRef.current.style.position = 'fixed';
-      exportRef.current.style.left = '-9999px';
-      exportRef.current.style.top = '0';
-      exportRef.current.style.display = 'block';
+      const exportContainer = exportRef.current;
 
-      // Wait for fonts
       await document.fonts.ready;
-      // Small delay for images/reflow
-      await new Promise((r) => setTimeout(r, 200));
+      await waitForExportAssets(exportContainer);
+      await waitForRenderStability();
 
-      const canvas = await html2canvas(exportRef.current, {
-        scale: 3,
+      const canvas = await html2canvas(exportContainer, {
+        scale: 2,
         useCORS: true,
         backgroundColor: '#ffffff',
         logging: false,
+        width: EXPORT_WIDTH,
+        windowWidth: EXPORT_WIDTH,
+        height: exportContainer.scrollHeight,
+        windowHeight: exportContainer.scrollHeight,
       });
 
       const link = document.createElement('a');
@@ -65,7 +93,6 @@ const Index = () => {
         </main>
       </div>
 
-      {/* Hidden export-only container */}
       <ExportCard ref={exportRef} data={data} />
     </div>
   );
