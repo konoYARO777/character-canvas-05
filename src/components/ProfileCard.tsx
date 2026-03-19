@@ -23,12 +23,7 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
   const dc = data.dividerColor;
   const bgTint = hexToRgba(data.secondaryColor, 0.2);
   const dividerStyle = `1px solid ${dc}`;
-
-  // Left column body height
   const BODY_HEIGHT = 720;
-  // Gallery title + gap + 2x2 grid should fill remaining space to align with body bottom
-  // Stats section height ~= 80px, header ~= 130px, gaps = 24*n
-  // We calculate gallery item height to align bottoms
 
   return (
     <div
@@ -68,14 +63,14 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
               [data.characterColors.other, '기타']] as const).map(([color, label], i) =>
               <div key={i} style={{ textAlign: 'center' }}>
                 <div style={{ width: 32, height: 32, borderRadius: '50%', background: color, border: '2px solid #fff', boxShadow: '0 1px 4px rgba(0,0,0,0.15)' }} />
-                <span style={{ fontSize: 9, color: '#a1a1aa', marginTop: 2, display: 'block' }}>{label}</span>
+                <span style={{ fontSize: 11, fontWeight: 500, color: sc2, marginTop: 1, display: 'block' }}>{label}</span>
               </div>
             )}
           </div>
         </div>
 
         {tags.length > 0 &&
-          <div style={{ padding: 14, border: `2px dashed ${dc}`, borderRadius: 8 }}>
+          <div style={{ padding: 14, border: `2px dashed ${dc}`, borderRadius: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <span style={{ fontSize: 14, fontWeight: 600, fontFamily: "'Paperozi', sans-serif", textTransform: 'uppercase', letterSpacing: '0.05em', color: pc }}>키워드</span>
             <p style={{ marginTop: 8, fontSize: 15, fontWeight: 700, lineHeight: 1.8, color: sc2, whiteSpace: 'normal', wordBreak: 'break-word' }}>
               {tags.map((tag) => `#${tag}`).join('  ')}
@@ -118,7 +113,7 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
           <span style={{ fontSize: 14, fontWeight: 600, fontFamily: "'Paperozi', sans-serif", textTransform: 'uppercase', letterSpacing: '0.05em', color: pc, marginBottom: 12, display: 'block' }}>갤러리</span>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, flex: 1 }}>
             {gallerySlots.map((img, i) =>
-              <div key={i} style={{ background: '#f4f4f5', borderRadius: 8, overflow: 'hidden', outline: '1px solid rgba(0,0,0,0.05)', outlineOffset: -1 }}>
+              <div key={i} style={{ background: dc, borderRadius: 8, overflow: 'hidden', outline: '1px solid rgba(0,0,0,0.05)', outlineOffset: -1 }}>
                 {img && <img src={img} alt={`갤러리 ${i + 1}`} style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center' }} />}
               </div>
             )}

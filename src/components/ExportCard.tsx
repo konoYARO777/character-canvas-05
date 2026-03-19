@@ -107,13 +107,13 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
             ] as const).map(([color, label], index) => (
               <div key={index} style={{ display: 'inline-block', textAlign: 'center', marginRight: 10 }}>
                 <div style={{ width: 36, height: 36, borderRadius: '50%', background: color, border: '2px solid #fff', boxShadow: '0 1px 4px rgba(0,0,0,0.15)', margin: '0 auto' }} />
-                <span style={{ display: 'block', marginTop: 4, fontSize: 10, fontWeight: 500, color: '#a1a1aa' }}>{label}</span>
+                <span style={{ display: 'block', marginTop: 2, fontSize: 11, fontWeight: 500, color: sc2 }}>{label}</span>
               </div>
             ))}
           </div>
 
           {tags.length > 0 && (
-            <div style={{ marginTop: 14, padding: 16, border: `2px dashed ${dc}`, borderRadius: 8 }}>
+            <div style={{ marginTop: 14, padding: 16, border: `2px dashed ${dc}`, borderRadius: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <span style={{ ...sectionHeadingStyle }}>키워드</span>
               <p style={{ margin: 0, fontSize: 16, fontWeight: 700, lineHeight: 1.8, color: sc2, whiteSpace: 'normal', wordBreak: 'break-word' }}>
                 {tags.map((tag) => `#${tag}`).join('  ')}
@@ -158,7 +158,7 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
             <span style={{ ...sectionHeadingStyle, fontSize: 14, marginBottom: 12 }}>갤러리</span>
             <div className="gallery-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', columnGap: 16, rowGap: 16 }}>
               {gallerySlots.map((image, index) => (
-                <div key={index} style={{ width: '100%', height: 318, background: '#f4f4f5', borderRadius: 8, overflow: 'hidden', outline: '1px solid rgba(0,0,0,0.05)', outlineOffset: -1 }}>
+                <div key={index} style={{ width: '100%', height: 318, background: dc, borderRadius: 8, overflow: 'hidden', outline: '1px solid rgba(0,0,0,0.05)', outlineOffset: -1 }}>
                   {image && <img src={image} alt={`갤러리 ${index + 1}`} style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center', display: 'block' }} />}
                 </div>
               ))}
