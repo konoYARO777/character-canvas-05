@@ -24,6 +24,7 @@ export interface CharacterData {
   galleryImages: string[];
   primaryColor: string;
   secondaryColor: string;
+  tertiaryColor: string;
   characterColors: CharacterColors;
   stories: StorySection[];
   credit: string;
@@ -42,6 +43,7 @@ export const DEFAULT_CHARACTER: CharacterData = {
   galleryImages: [],
   primaryColor: '#000000',
   secondaryColor: '#71717a',
+  tertiaryColor: '#3f3f46',
   characterColors: {
     hair: '#2d2d2d',
     eye1: '#4a90d9',
