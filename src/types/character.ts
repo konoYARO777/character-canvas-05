@@ -43,6 +43,7 @@ export const DEFAULT_CHARACTER: CharacterData = {
   galleryImages: [],
   primaryColor: '#000000',
   secondaryColor: '#71717a',
+  tertiaryColor: '#3f3f46',
   characterColors: {
     hair: '#2d2d2d',
     eye1: '#4a90d9',

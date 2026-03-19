@@ -193,14 +193,18 @@ const EditorPanel = ({ data, onChange, onExport, exporting }: EditorPanelProps) 
             </div>
 
             {/* Theme colors */}
-            <div className="pt-3 border-t border-border grid grid-cols-2 gap-3">
+            <div className="pt-3 border-t border-border grid grid-cols-3 gap-3">
               <div>
                 <label className="label-text">메인 색상</label>
                 <input type="color" value={data.primaryColor} onChange={(e) => onChange({ primaryColor: e.target.value })} className="w-full h-8 rounded-md cursor-pointer border-0" />
               </div>
               <div>
-                <label className="label-text">서브 색상</label>
+                <label className="label-text">서브 색상 1</label>
                 <input type="color" value={data.secondaryColor} onChange={(e) => onChange({ secondaryColor: e.target.value })} className="w-full h-8 rounded-md cursor-pointer border-0" />
+              </div>
+              <div>
+                <label className="label-text">서브 색상 2</label>
+                <input type="color" value={data.tertiaryColor} onChange={(e) => onChange({ tertiaryColor: e.target.value })} className="w-full h-8 rounded-md cursor-pointer border-0" />
               </div>
             </div>
           </div>
