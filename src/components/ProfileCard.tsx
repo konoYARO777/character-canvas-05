@@ -100,14 +100,17 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
             <span
               key={i}
               style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
                 padding: '4px 10px',
                 background: data.primaryColor,
                 color: '#fff',
                 borderRadius: 20,
                 fontSize: 11,
-                fontWeight: 600
+                fontWeight: 600,
+                lineHeight: 1.2
               }}>
-              
                   {tag}
                 </span>
             )}
