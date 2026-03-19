@@ -164,7 +164,7 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
 
           {tags.length > 0 && (
             <div style={{ borderTop: dividerStyle, borderBottom: dividerStyle, paddingTop: 22, paddingBottom: 22 }}>
-              <h3 style={{ margin: '0 0 8px 0', fontSize: 18, fontWeight: 700, fontFamily: "'Paperozi', sans-serif", lineHeight: 1.4, color: pc }}>키워드</h3>
+              <h3 style={{ ...sectionHeadingStyle, margin: '0 0 8px 0' }}>키워드</h3>
               <p style={{ margin: 0, fontSize: 16, fontWeight: 700, lineHeight: 1.8, color: sc2, whiteSpace: 'normal', wordBreak: 'break-word', overflowWrap: 'break-word' }}>
                 {tags.map((tag) => `#${tag}`).join('  ')}
               </p>
@@ -176,7 +176,7 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
         <div style={{ gridColumn: 2, gridRow: 2, display: 'flex', flexDirection: 'column', gap: 22, minWidth: 0 }}>
           {hasPersonality && (
             <div style={{ borderTop: dividerStyle, paddingTop: 22, paddingBottom: 22 }}>
-              <h3 style={{ margin: '0 0 8px 0', fontSize: 18, fontWeight: 700, fontFamily: "'Paperozi', sans-serif", lineHeight: 1.4, color: pc }}>성격</h3>
+              <h3 style={{ ...sectionHeadingStyle, margin: '0 0 8px 0' }}>성격</h3>
               <p style={{ margin: 0, fontSize: 14, fontWeight: 400, color: sc2, ...textStyle }}>{data.personality}</p>
             </div>
           )}
@@ -185,7 +185,7 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
             <div style={{ borderTop: dividerStyle, paddingTop: 22 }}>
               {storiesWithContent.map((story, index) => (
                 <div key={index} style={{ marginBottom: index < storiesWithContent.length - 1 ? 22 : 0 }}>
-                  <h3 style={{ margin: '0 0 8px 0', fontSize: 18, fontWeight: 700, fontFamily: "'Paperozi', sans-serif", lineHeight: 1.4, color: pc }}>{story.title}</h3>
+                  <h3 style={{ ...sectionHeadingStyle, margin: '0 0 8px 0' }}>{story.title}</h3>
                   <p style={{ margin: 0, fontSize: 14, fontWeight: 400, color: sc2, ...textStyle }}>{story.content}</p>
                 </div>
               ))}
