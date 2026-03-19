@@ -144,16 +144,13 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
           </div>
         }
 
-        <div style={{ marginTop: 'auto', paddingTop: 24, borderTop: dividerStyle, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
-          <span style={{ fontSize: 9, color: '#d4d4d8', fontFamily: 'monospace', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-            Generated via Archetype Protocol // {new Date().getFullYear()}
-          </span>
-          {data.credit?.trim() && (
+        {data.credit?.trim() && (
+          <div style={{ marginTop: 'auto', paddingTop: 24, borderTop: dividerStyle, display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-end' }}>
             <span style={{ fontSize: 11, color: sc2 }}>
               {data.credit.split(',').map(c => c.trim()).filter(Boolean).map(c => `© ${c}`).join(', ')}
             </span>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );
