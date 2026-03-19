@@ -71,8 +71,8 @@ const EditorPanel = ({ data, onChange, onExport, exporting }: EditorPanelProps) 
     e.preventDefault();
     const files = Array.from(e.dataTransfer.files).filter((f) => f.type.startsWith('image/'));
     if (!files.length) return;
-    if (type === 'face') onChange({ faceImage: await readFileAsDataURL(files[0]) });else
-    if (type === 'body') onChange({ bodyImage: await readFileAsDataURL(files[0]) });else
+    if (type === 'face') { openCropper(files[0], 'face'); return; }
+    if (type === 'body') { openCropper(files[0], 'body'); return; }
     {
       const urls = await Promise.all(files.slice(0, 6).map(readFileAsDataURL));
       onChange({ galleryImages: [...data.galleryImages, ...urls].slice(0, 6) });
