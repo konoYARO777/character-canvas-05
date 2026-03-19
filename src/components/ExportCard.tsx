@@ -26,7 +26,9 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
 
   const pc = data.primaryColor;
   const sc2 = data.tertiaryColor;
+  const dc = data.dividerColor;
   const bgTint = hexToRgba(data.secondaryColor, 0.2);
+  const dividerStyle = `1px solid ${dc}`;
 
   const textStyle = {
     fontFamily: "'Inter', 'Noto Sans KR', system-ui, sans-serif",
@@ -83,18 +85,7 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
         }}
       >
         <div style={{ display: 'block' }}>
-          <div
-            style={{
-              width: LEFT_COLUMN_WIDTH,
-              height: 1008,
-              background: '#f4f4f5',
-              borderRadius: 8,
-              overflow: 'hidden',
-              outline: '1px solid rgba(0,0,0,0.05)',
-              outlineOffset: -1,
-              textAlign: 'center',
-            }}
-          >
+          <div style={{ width: LEFT_COLUMN_WIDTH, height: 1008, background: '#f4f4f5', borderRadius: 8, overflow: 'hidden', outline: '1px solid rgba(0,0,0,0.05)', outlineOffset: -1, textAlign: 'center' }}>
             {data.bodyImage ? (
               <img src={data.bodyImage} alt="전신" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
             ) : (
@@ -104,7 +95,7 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
             )}
           </div>
 
-          <div style={{ marginTop: 18, padding: 16, border: '2px dashed #f4f4f5', borderRadius: 8 }}>
+          <div style={{ marginTop: 18, padding: 16, border: `2px dashed ${dc}`, borderRadius: 8 }}>
             <span style={{ ...sectionHeadingStyle }}>캐릭터 색상</span>
             {([
               [data.characterColors.hair, '머리'],
@@ -121,9 +112,9 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
           </div>
 
           {tags.length > 0 && (
-            <div style={{ marginTop: 14, padding: 16, border: '2px dashed #f4f4f5', borderRadius: 8 }}>
+            <div style={{ marginTop: 14, padding: 16, border: `2px dashed ${dc}`, borderRadius: 8 }}>
               <span style={{ ...sectionHeadingStyle }}>키워드</span>
-              <p style={{ margin: 0, fontSize: 13, fontWeight: 600, lineHeight: 1.8, color: sc2, whiteSpace: 'normal', wordBreak: 'break-word' }}>
+              <p style={{ margin: 0, fontSize: 16, fontWeight: 700, lineHeight: 1.8, color: sc2, whiteSpace: 'normal', wordBreak: 'break-word' }}>
                 {tags.map((tag) => `#${tag}`).join('  ')}
               </p>
             </div>
@@ -136,11 +127,8 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
               <h2 style={{ margin: 0, display: 'block', fontSize: 58, fontWeight: 800, fontFamily: "'Paperozi', sans-serif", letterSpacing: '-0.03em', textTransform: 'uppercase', lineHeight: 1.2, color: pc, marginBottom: 10 }}>
                 {data.name || '이름 없음'}
               </h2>
-              <p style={{ margin: 0, display: 'block', fontSize: 22, fontWeight: 500, lineHeight: 1.5, color: sc2 }}>
-                {data.occupation || '직업'}
-              </p>
+              <p style={{ margin: 0, display: 'block', fontSize: 22, fontWeight: 500, lineHeight: 1.5, color: sc2 }}>{data.occupation || '직업'}</p>
             </div>
-
             <div style={{ width: 140, height: 140, borderRadius: '50%', overflow: 'hidden', border: '4px solid #ffffff', boxShadow: '0 4px 12px rgba(0,0,0,0.15)', background: '#f4f4f5', textAlign: 'center' }}>
               {data.faceImage ? (
                 <img src={data.faceImage} alt="얼굴" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
@@ -152,7 +140,7 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', columnGap: 20, padding: '22px 0', borderTop: '1px solid #f4f4f5', borderBottom: '1px solid #f4f4f5', marginBottom: 28 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', columnGap: 20, padding: '22px 0', borderTop: dividerStyle, borderBottom: dividerStyle, marginBottom: 28 }}>
             {[
               { label: '나이', value: data.age },
               { label: '종족', value: data.species },
@@ -177,14 +165,14 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
           </div>
 
           {hasPersonality && (
-            <div style={{ borderTop: '1px solid #f4f4f5', paddingTop: 22, marginBottom: 22 }}>
+            <div style={{ borderTop: dividerStyle, paddingTop: 22, marginBottom: 22 }}>
               <h3 style={{ margin: '0 0 8px 0', fontSize: 18, fontWeight: 700, fontFamily: "'Paperozi', sans-serif", lineHeight: 1.4, color: pc }}>성격</h3>
               <p style={{ margin: 0, fontSize: 14, fontWeight: 400, color: sc2, ...textStyle }}>{data.personality}</p>
             </div>
           )}
 
           {storiesWithContent.length > 0 && (
-            <div style={{ borderTop: '1px solid #f4f4f5', paddingTop: 22, marginBottom: 22 }}>
+            <div style={{ borderTop: dividerStyle, paddingTop: 22, marginBottom: 22 }}>
               {storiesWithContent.map((story, index) => (
                 <div key={index} style={{ marginBottom: index < storiesWithContent.length - 1 ? 22 : 0 }}>
                   <h3 style={{ margin: '0 0 8px 0', fontSize: 18, fontWeight: 700, fontFamily: "'Paperozi', sans-serif", lineHeight: 1.4, color: pc }}>{story.title}</h3>
@@ -194,7 +182,7 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
             </div>
           )}
 
-          <div style={{ display: 'grid', gridTemplateColumns: credits.length > 0 ? '1fr auto' : '1fr', columnGap: 16, alignItems: 'end', paddingTop: 24, borderTop: '1px solid #f4f4f5' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: credits.length > 0 ? '1fr auto' : '1fr', columnGap: 16, alignItems: 'end', paddingTop: 24, borderTop: dividerStyle }}>
             <span style={{ display: 'block', fontSize: 10, fontWeight: 500, color: '#d4d4d8', fontFamily: 'monospace', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
               Generated via Archetype Protocol // {new Date().getFullYear()}
             </span>
