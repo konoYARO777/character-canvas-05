@@ -52,7 +52,7 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
           }
         </div>
 
-        <div style={{ padding: 14, border: `2px solid ${dc}`, borderRadius: 8 }}>
+        <div style={{ padding: 14, border: `1px solid ${dc}`, borderRadius: 8 }}>
           <span style={{ fontSize: 14, fontWeight: 600, fontFamily: "'Paperozi', sans-serif", textTransform: 'uppercase', letterSpacing: '0.05em', color: pc }}>캐릭터 색상</span>
           <div style={{ display: 'flex', gap: 8, marginTop: 8 }}>
             {([
@@ -70,7 +70,7 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
         </div>
 
         {tags.length > 0 &&
-          <div style={{ padding: 14, border: `2px solid ${dc}`, borderRadius: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+          <div style={{ padding: 14, border: `1px solid ${dc}`, borderRadius: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <span style={{ fontSize: 14, fontWeight: 600, fontFamily: "'Paperozi', sans-serif", textTransform: 'uppercase', letterSpacing: '0.05em', color: pc }}>키워드</span>
             <p style={{ marginTop: 8, fontSize: 15, fontWeight: 700, lineHeight: 1.8, color: sc2, whiteSpace: 'normal', wordBreak: 'break-word' }}>
               {tags.map((tag) => `#${tag}`).join('  ')}
