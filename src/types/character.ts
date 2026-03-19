@@ -24,6 +24,7 @@ export interface CharacterData {
   galleryImages: string[];
   primaryColor: string;
   secondaryColor: string;
+  tertiaryColor: string;
   characterColors: CharacterColors;
   stories: StorySection[];
   credit: string;
