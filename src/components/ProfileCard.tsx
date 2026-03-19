@@ -157,7 +157,7 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
             }}>
             
             {data.faceImage ?
-            <img src={data.faceImage} alt="얼굴" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> :
+            <img src={data.faceImage} alt="얼굴" style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center' }} /> :
 
             <span style={{ fontSize: 9, color: '#a1a1aa' }}>얼굴</span>
             }
