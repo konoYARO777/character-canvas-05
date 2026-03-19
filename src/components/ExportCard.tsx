@@ -175,7 +175,7 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
         {/* Row 2 Right: Personality + Stories + Footer */}
         <div style={{ gridColumn: 2, gridRow: 2, display: 'flex', flexDirection: 'column', gap: 22, minWidth: 0 }}>
           {hasPersonality && (
-            <div style={{ borderTop: dividerStyle, paddingTop: 22 }}>
+            <div style={{ borderTop: dividerStyle, paddingTop: 22, paddingBottom: 22 }}>
               <h3 style={{ margin: '0 0 8px 0', fontSize: 18, fontWeight: 700, fontFamily: "'Paperozi', sans-serif", lineHeight: 1.4, color: pc }}>성격</h3>
               <p style={{ margin: 0, fontSize: 14, fontWeight: 400, color: sc2, ...textStyle }}>{data.personality}</p>
             </div>
