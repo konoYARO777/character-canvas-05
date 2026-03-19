@@ -17,17 +17,23 @@ const Index = () => {
     if (!cardRef.current) return;
     setExporting(true);
     try {
+      cardRef.current.classList.add('export-mode');
+      // Allow reflow
+      await new Promise((r) => setTimeout(r, 100));
       const canvas = await html2canvas(cardRef.current, {
-        scale: 2,
+        scale: 3,
         useCORS: true,
         backgroundColor: '#ffffff',
+        logging: false,
       });
+      cardRef.current.classList.remove('export-mode');
       const link = document.createElement('a');
       link.download = `OC_프로필_${data.name || '미정'}.png`;
       link.href = canvas.toDataURL('image/png');
       link.click();
     } catch (err) {
       console.error('내보내기 실패', err);
+      cardRef.current?.classList.remove('export-mode');
     } finally {
       setExporting(false);
     }

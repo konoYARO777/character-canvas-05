@@ -142,3 +142,29 @@
     font-variant-numeric: tabular-nums;
   }
 }
+
+/* Export-mode overrides for html2canvas stability */
+.export-mode {
+  width: 800px !important;
+  max-width: 800px !important;
+  transform: none !important;
+  scale: 1 !important;
+}
+
+.export-mode * {
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.export-mode h2 {
+  display: block !important;
+  margin-bottom: 8px !important;
+  line-height: 1.2 !important;
+}
+
+.export-mode p {
+  display: block !important;
+  margin-top: 4px !important;
+}
