@@ -52,7 +52,7 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
           }
         </div>
 
-        <div style={{ padding: 14, border: `1px solid ${dc}`, borderRadius: 8 }}>
+        <div style={{ padding: '14px 0', borderTop: dividerStyle, borderBottom: dividerStyle }}>
           <span style={{ fontSize: 14, fontWeight: 600, fontFamily: "'Paperozi', sans-serif", textTransform: 'uppercase', letterSpacing: '0.05em', color: pc }}>캐릭터 색상</span>
           <div style={{ display: 'flex', gap: 8, marginTop: 8 }}>
             {([
