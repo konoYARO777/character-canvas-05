@@ -96,7 +96,7 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
             )}
           </div>
 
-          <div style={{ marginTop: 18, padding: 16, border: `1px solid ${dc}`, borderRadius: 8 }}>
+          <div style={{ marginTop: 18, padding: '16px 0', borderTop: dividerStyle, borderBottom: dividerStyle }}>
             <span style={{ ...sectionHeadingStyle }}>캐릭터 색상</span>
             {([
               [data.characterColors.hair, '머리'],
