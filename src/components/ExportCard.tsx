@@ -162,7 +162,7 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
           </div>
 
           {tags.length > 0 && (
-            <div style={{ padding: '16px 0', borderTop: dividerStyle, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <div style={{ padding: '16px 0', borderTop: dividerStyle, borderBottom: dividerStyle, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <span style={{ ...sectionHeadingStyle }}>키워드</span>
               <p style={{ margin: 0, fontSize: 16, fontWeight: 700, lineHeight: 1.8, color: sc2, whiteSpace: 'normal', wordBreak: 'break-word' }}>
                 {tags.map((tag) => `#${tag}`).join('  ')}
@@ -191,16 +191,13 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
             </div>
           )}
 
-          <div style={{ marginTop: 'auto', paddingTop: 24, borderTop: dividerStyle, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
-            <span style={{ display: 'block', fontSize: 10, fontWeight: 500, color: '#d4d4d8', fontFamily: 'monospace', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-              Generated via Archetype Protocol // {new Date().getFullYear()}
-            </span>
-            {credits.length > 0 && (
+          {credits.length > 0 && (
+            <div style={{ marginTop: 'auto', paddingTop: 24, borderTop: dividerStyle, display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-end' }}>
               <span style={{ display: 'block', fontSize: 12, fontWeight: 500, lineHeight: 1.5, color: sc2 }}>
                 {credits.map((credit) => `© ${credit}`).join(', ')}
               </span>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
