@@ -209,7 +209,7 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
                 <img
                   src={data.faceImage}
                   alt="얼굴"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                  style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center', display: 'block' }}
                 />
               ) : (
                 <div style={{ paddingTop: 62 }}>
