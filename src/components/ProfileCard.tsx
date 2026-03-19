@@ -21,6 +21,7 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
   const pc = data.primaryColor;
   const sc2 = data.tertiaryColor;
   const dc = data.dividerColor;
+  const ibg = data.imageBgColor;
   const bgTint = hexToRgba(data.secondaryColor, 0.2);
   const dividerStyle = `1px solid ${dc}`;
 
