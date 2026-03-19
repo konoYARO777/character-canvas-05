@@ -88,7 +88,7 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
           <span style={{ fontSize: 14, fontWeight: 600, fontFamily: "'Paperozi', sans-serif", textTransform: 'uppercase', letterSpacing: '0.05em', color: pc, marginBottom: 12, display: 'block' }}>갤러리</span>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, flex: 1 }}>
             {gallerySlots.map((img, i) =>
-              <div key={i} style={{ background: dc, borderRadius: 8, overflow: 'hidden', outline: '1px solid rgba(0,0,0,0.05)', outlineOffset: -1 }}>
+              <div key={i} style={{ background: ibg, borderRadius: 8, overflow: 'hidden', outline: '1px solid rgba(0,0,0,0.05)', outlineOffset: -1 }}>
                 {img && <img src={img} alt={`갤러리 ${i + 1}`} style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center' }} />}
               </div>
             )}
