@@ -51,7 +51,7 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
           }}>
           
           {data.bodyImage ?
-          <img src={data.bodyImage} alt="전신" style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center' }} /> :
+          <img src={data.bodyImage} alt="전신" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} /> :
 
           <span style={{ fontSize: 10, color: '#a1a1aa', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
               전신 이미지
