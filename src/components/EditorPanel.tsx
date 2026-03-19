@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react';
 import { CharacterData, OCCUPATIONS } from '@/types/character';
 import { Upload, ChevronDown, ChevronUp } from 'lucide-react';
+import ImageCropModal from '@/components/ImageCropModal';
 
 interface EditorPanelProps {
   data: CharacterData;
