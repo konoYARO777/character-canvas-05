@@ -24,6 +24,12 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
   const bgTint = hexToRgba(data.secondaryColor, 0.2);
   const dividerStyle = `1px solid ${dc}`;
 
+  // Left column body height
+  const BODY_HEIGHT = 720;
+  // Gallery title + gap + 2x2 grid should fill remaining space to align with body bottom
+  // Stats section height ~= 80px, header ~= 130px, gaps = 24*n
+  // We calculate gallery item height to align bottoms
+
   return (
     <div
       ref={ref}
@@ -44,7 +50,7 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
 
       {/* Left Column */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-        <div style={{ height: 720, background: '#f4f4f5', borderRadius: 8, overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', outline: '1px solid rgba(0,0,0,0.05)', outlineOffset: -1 }}>
+        <div style={{ height: BODY_HEIGHT, background: dc, borderRadius: 8, overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', outline: '1px solid rgba(0,0,0,0.05)', outlineOffset: -1 }}>
           {data.bodyImage ?
             <img src={data.bodyImage} alt="전신" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} /> :
             <span style={{ fontSize: 10, color: '#a1a1aa', textTransform: 'uppercase', letterSpacing: '0.1em' }}>전신 이미지</span>
@@ -108,11 +114,11 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
           )}
         </div>
 
-        <div>
-          <span style={{ fontSize: 11, fontWeight: 600, fontFamily: "'Paperozi', sans-serif", textTransform: 'uppercase', letterSpacing: '0.05em', color: pc, marginBottom: 12, display: 'block' }}>갤러리</span>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+        <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+          <span style={{ fontSize: 14, fontWeight: 600, fontFamily: "'Paperozi', sans-serif", textTransform: 'uppercase', letterSpacing: '0.05em', color: pc, marginBottom: 12, display: 'block' }}>갤러리</span>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, flex: 1 }}>
             {gallerySlots.map((img, i) =>
-              <div key={i} style={{ aspectRatio: '1', background: '#f4f4f5', borderRadius: 8, overflow: 'hidden', outline: '1px solid rgba(0,0,0,0.05)', outlineOffset: -1 }}>
+              <div key={i} style={{ background: '#f4f4f5', borderRadius: 8, overflow: 'hidden', outline: '1px solid rgba(0,0,0,0.05)', outlineOffset: -1 }}>
                 {img && <img src={img} alt={`갤러리 ${i + 1}`} style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center' }} />}
               </div>
             )}

@@ -207,7 +207,7 @@ const EditorPanel = ({ data, onChange, onExport, exporting }: EditorPanelProps) 
                 <input type="color" value={data.tertiaryColor} onChange={(e) => onChange({ tertiaryColor: e.target.value })} className="w-full h-8 rounded-md cursor-pointer border-0" />
               </div>
               <div>
-                <label className="label-text">구분선 색상</label>
+                <label className="label-text">구분색</label>
                 <input type="color" value={data.dividerColor} onChange={(e) => onChange({ dividerColor: e.target.value })} className="w-full h-8 rounded-md cursor-pointer border-0" />
               </div>
             </div>
