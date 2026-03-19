@@ -283,7 +283,7 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
                     <img
                       src={image}
                       alt={`갤러리 ${index + 1}`}
-                      style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                      style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center', display: 'block' }}
                     />
                   )}
                 </div>
