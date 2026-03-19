@@ -164,7 +164,7 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
 
           {tags.length > 0 && (
             <div style={{ borderTop: dividerStyle, borderBottom: dividerStyle, paddingTop: 22, paddingBottom: 22 }}>
-              <h3 style={{ margin: '0 0 8px 0', fontSize: 18, fontWeight: 700, fontFamily: "'Paperozi', sans-serif", lineHeight: 1.4, color: pc }}>키워드</h3>
+              <h3 style={{ ...sectionHeadingStyle, margin: '0 0 8px 0' }}>키워드</h3>
               <p style={{ margin: 0, fontSize: 16, fontWeight: 700, lineHeight: 1.8, color: sc2, whiteSpace: 'normal', wordBreak: 'break-word', overflowWrap: 'break-word' }}>
                 {tags.map((tag) => `#${tag}`).join('  ')}
               </p>
