@@ -115,7 +115,7 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
         </div>
 
         {tags.length > 0 &&
-          <div style={{ padding: '14px 0', borderTop: dividerStyle, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+          <div style={{ padding: '14px 0', borderTop: dividerStyle, borderBottom: dividerStyle, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <span style={{ fontSize: 14, fontWeight: 600, fontFamily: "'Paperozi', sans-serif", textTransform: 'uppercase', letterSpacing: '0.05em', color: pc }}>키워드</span>
             <p style={{ marginTop: 8, fontSize: 15, fontWeight: 700, lineHeight: 1.8, color: sc2, whiteSpace: 'normal', wordBreak: 'break-word' }}>
               {tags.map((tag) => `#${tag}`).join('  ')}
