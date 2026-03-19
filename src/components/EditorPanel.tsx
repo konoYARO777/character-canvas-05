@@ -285,7 +285,7 @@ const EditorPanel = ({ data, onChange, onExport, exporting }: EditorPanelProps) 
         <ImageCropModal
           open={!!cropSrc}
           imageSrc={cropSrc}
-          aspectRatio={cropTarget === 'body' ? 3 / 4 : 1}
+          aspectRatio={cropTarget === 'body' ? 5 / 12 : 1}
           onComplete={handleCropComplete}
           onCancel={handleCropCancel}
         />

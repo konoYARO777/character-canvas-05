@@ -39,7 +39,7 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
         {/* Full Body */}
         <div
           style={{
-            aspectRatio: '3 / 4',
+            height: 720,
             background: '#f4f4f5',
             borderRadius: 8,
             overflow: 'hidden',
@@ -95,28 +95,9 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
             <span style={{ fontSize: 14, fontWeight: 600, fontFamily: "'Paperozi', sans-serif", textTransform: 'uppercase', letterSpacing: '0.05em', color: data.primaryColor }}>
               키워드
             </span>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 8 }}>
-              {tags.map((tag, i) =>
-            <span
-              key={i}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                height: 26,
-                padding: '0 10px',
-                background: data.primaryColor,
-                color: '#fff',
-                borderRadius: 20,
-                fontSize: 11,
-                fontWeight: 600,
-                lineHeight: 1,
-                verticalAlign: 'middle',
-              }}>
-                  {tag}
-                </span>
-            )}
-            </div>
+            <p style={{ marginTop: 8, fontSize: 12, fontWeight: 600, lineHeight: 1.8, color: data.primaryColor, whiteSpace: 'normal', wordBreak: 'break-word' }}>
+              {tags.map((tag) => `#${tag}`).join('  ')}
+            </p>
           </div>
         }
       </div>
