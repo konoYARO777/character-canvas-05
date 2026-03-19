@@ -188,8 +188,8 @@ const EditorPanel = ({ data, onChange, onExport, exporting }: EditorPanelProps) 
             </div>
 
             <div>
-              <label className="label-text">키워드 (쉼표로 구분)</label>
-              <input type="text" className="input-field" placeholder="강인함, 민첩함, 충성" value={data.keywords} onChange={(e) => onChange({ keywords: e.target.value })} />
+              <label className="label-text">키워드 (쉼표 또는 줄바꿈으로 구분)</label>
+              <textarea className="input-field resize-none" rows={3} placeholder="강인함, 민첩함&#10;충성" value={data.keywords} onChange={(e) => onChange({ keywords: e.target.value })} />
             </div>
 
             {/* Theme colors */}
