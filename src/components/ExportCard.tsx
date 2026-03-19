@@ -87,7 +87,7 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
               <img
                 src={data.bodyImage}
                 alt="전신"
-                style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center', display: 'block' }}
+                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
               />
             ) : (
               <div style={{ paddingTop: 492 }}>
@@ -134,13 +134,15 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
                     display: 'inline-flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    padding: '5px 11px',
+                    height: 28,
+                    padding: '0 12px',
                     background: data.primaryColor,
                     color: '#ffffff',
                     borderRadius: 999,
                     fontSize: 12,
                     fontWeight: 700,
-                    lineHeight: 1.2,
+                    lineHeight: 1,
+                    verticalAlign: 'middle',
                     marginRight: 8,
                     marginBottom: 8,
                   }}
@@ -209,7 +211,7 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
                 <img
                   src={data.faceImage}
                   alt="얼굴"
-                  style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center', display: 'block' }}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
                 />
               ) : (
                 <div style={{ paddingTop: 62 }}>

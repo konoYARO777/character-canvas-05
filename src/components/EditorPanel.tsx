@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react';
 import { CharacterData, OCCUPATIONS } from '@/types/character';
 import { Upload, ChevronDown, ChevronUp } from 'lucide-react';
+import ImageCropModal from '@/components/ImageCropModal';
 
 interface EditorPanelProps {
   data: CharacterData;
@@ -26,19 +27,39 @@ const EditorPanel = ({ data, onChange, onExport, exporting }: EditorPanelProps) 
     story: true,
     appearance: true
   });
+  const [cropSrc, setCropSrc] = useState<string | null>(null);
+  const [cropTarget, setCropTarget] = useState<'face' | 'body' | null>(null);
 
   const toggle = (key: SectionKey) =>
   setOpenSections((prev) => ({ ...prev, [key]: !prev[key] }));
 
+  const openCropper = useCallback(async (file: File, target: 'face' | 'body') => {
+    const url = await readFileAsDataURL(file);
+    setCropSrc(url);
+    setCropTarget(target);
+  }, []);
+
+  const handleCropComplete = useCallback((croppedDataUrl: string) => {
+    if (cropTarget === 'face') onChange({ faceImage: croppedDataUrl });
+    else if (cropTarget === 'body') onChange({ bodyImage: croppedDataUrl });
+    setCropSrc(null);
+    setCropTarget(null);
+  }, [cropTarget, onChange]);
+
+  const handleCropCancel = useCallback(() => {
+    setCropSrc(null);
+    setCropTarget(null);
+  }, []);
+
   const handleFace = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (file) onChange({ faceImage: await readFileAsDataURL(file) });
-  }, [onChange]);
+    if (file) openCropper(file, 'face');
+  }, [openCropper]);
 
   const handleBody = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (file) onChange({ bodyImage: await readFileAsDataURL(file) });
-  }, [onChange]);
+    if (file) openCropper(file, 'body');
+  }, [openCropper]);
 
   const handleGallery = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files || []).slice(0, 6);
@@ -50,8 +71,8 @@ const EditorPanel = ({ data, onChange, onExport, exporting }: EditorPanelProps) 
     e.preventDefault();
     const files = Array.from(e.dataTransfer.files).filter((f) => f.type.startsWith('image/'));
     if (!files.length) return;
-    if (type === 'face') onChange({ faceImage: await readFileAsDataURL(files[0]) });else
-    if (type === 'body') onChange({ bodyImage: await readFileAsDataURL(files[0]) });else
+    if (type === 'face') { openCropper(files[0], 'face'); return; }
+    if (type === 'body') { openCropper(files[0], 'body'); return; }
     {
       const urls = await Promise.all(files.slice(0, 6).map(readFileAsDataURL));
       onChange({ galleryImages: [...data.galleryImages, ...urls].slice(0, 6) });
@@ -259,6 +280,16 @@ const EditorPanel = ({ data, onChange, onExport, exporting }: EditorPanelProps) 
           {exporting ? '생성 중...' : '이미지로 저장'}
         </button>
       </div>
+
+      {cropSrc && cropTarget && (
+        <ImageCropModal
+          open={!!cropSrc}
+          imageSrc={cropSrc}
+          aspectRatio={cropTarget === 'body' ? 3 / 4 : 1}
+          onComplete={handleCropComplete}
+          onCancel={handleCropCancel}
+        />
+      )}
     </aside>);
 
 };
