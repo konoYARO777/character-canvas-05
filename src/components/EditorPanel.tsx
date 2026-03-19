@@ -280,6 +280,16 @@ const EditorPanel = ({ data, onChange, onExport, exporting }: EditorPanelProps) 
           {exporting ? '생성 중...' : '이미지로 저장'}
         </button>
       </div>
+
+      {cropSrc && cropTarget && (
+        <ImageCropModal
+          open={!!cropSrc}
+          imageSrc={cropSrc}
+          aspectRatio={cropTarget === 'body' ? 3 / 4 : 1}
+          onComplete={handleCropComplete}
+          onCancel={handleCropCancel}
+        />
+      )}
     </aside>);
 
 };
