@@ -88,7 +88,7 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
       >
         {/* Row 1 Left: Body Image */}
         <div style={{ gridColumn: 1, gridRow: 1, paddingBottom: 18 }}>
-          <div style={{ width: LEFT_COLUMN_WIDTH, height: '100%', minHeight: 1008, background: dc, borderRadius: 8, overflow: 'hidden', outline: '1px solid rgba(0,0,0,0.05)', outlineOffset: -1, textAlign: 'center' }}>
+          <div style={{ width: LEFT_COLUMN_WIDTH, height: '100%', minHeight: 1008, background: ibg, borderRadius: 8, overflow: 'hidden', outline: '1px solid rgba(0,0,0,0.05)', outlineOffset: -1, textAlign: 'center' }}>
             {data.bodyImage ? (
               <img src={data.bodyImage} alt="전신" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
             ) : (
