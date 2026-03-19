@@ -39,7 +39,7 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
         {/* Full Body */}
         <div
           style={{
-            aspectRatio: '3 / 4',
+            height: 720,
             background: '#f4f4f5',
             borderRadius: 8,
             overflow: 'hidden',
