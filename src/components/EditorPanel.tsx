@@ -27,6 +27,8 @@ const EditorPanel = ({ data, onChange, onExport, exporting }: EditorPanelProps) 
     story: true,
     appearance: true
   });
+  const [cropSrc, setCropSrc] = useState<string | null>(null);
+  const [cropTarget, setCropTarget] = useState<'face' | 'body' | null>(null);
 
   const toggle = (key: SectionKey) =>
   setOpenSections((prev) => ({ ...prev, [key]: !prev[key] }));
