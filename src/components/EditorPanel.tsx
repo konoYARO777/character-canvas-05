@@ -210,6 +210,10 @@ const EditorPanel = ({ data, onChange, onExport, exporting }: EditorPanelProps) 
                 <label className="label-text">구분색</label>
                 <input type="color" value={data.dividerColor} onChange={(e) => onChange({ dividerColor: e.target.value })} className="w-full h-8 rounded-md cursor-pointer border-0" />
               </div>
+              <div>
+                <label className="label-text">이미지 배경색</label>
+                <input type="color" value={data.imageBgColor} onChange={(e) => onChange({ imageBgColor: e.target.value })} className="w-full h-8 rounded-md cursor-pointer border-0" />
+              </div>
             </div>
           </div>
         }

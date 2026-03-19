@@ -47,6 +47,7 @@ export const DEFAULT_CHARACTER: CharacterData = {
   secondaryColor: '#71717a',
   tertiaryColor: '#3f3f46',
   dividerColor: '#f4f4f5',
+  imageBgColor: '#f4f4f5',
   characterColors: {
     hair: '#2d2d2d',
     eye1: '#4a90d9',
