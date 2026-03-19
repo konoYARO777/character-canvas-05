@@ -103,13 +103,15 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
                 display: 'inline-flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                padding: '4px 10px',
+                height: 26,
+                padding: '0 10px',
                 background: data.primaryColor,
                 color: '#fff',
                 borderRadius: 20,
                 fontSize: 11,
                 fontWeight: 600,
-                lineHeight: 1.2
+                lineHeight: 1,
+                verticalAlign: 'middle',
               }}>
                   {tag}
                 </span>
