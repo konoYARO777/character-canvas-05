@@ -131,11 +131,11 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
             ))}
           </div>
 
-          <div style={{ flex: 1 }}>
+          <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
             <span style={{ ...sectionHeadingStyle, fontSize: 14, marginBottom: 12 }}>갤러리</span>
-            <div className="gallery-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', columnGap: 16, rowGap: 16 }}>
+            <div className="gallery-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gridTemplateRows: '1fr 1fr', columnGap: 16, rowGap: 16, flex: 1 }}>
               {gallerySlots.map((image, index) => (
-                <div key={index} style={{ width: '100%', height: 318, background: dc, borderRadius: 8, overflow: 'hidden', outline: '1px solid rgba(0,0,0,0.05)', outlineOffset: -1 }}>
+                <div key={index} style={{ width: '100%', background: dc, borderRadius: 8, overflow: 'hidden', outline: '1px solid rgba(0,0,0,0.05)', outlineOffset: -1 }}>
                   {image && <img src={image} alt={`갤러리 ${index + 1}`} style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center', display: 'block' }} />}
                 </div>
               ))}
@@ -162,9 +162,9 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
           </div>
 
           {tags.length > 0 && (
-            <div style={{ padding: '16px 0', borderTop: dividerStyle, borderBottom: dividerStyle, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <div style={{ paddingTop: 16, paddingBottom: 16, borderTop: dividerStyle, borderBottom: dividerStyle, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <span style={{ ...sectionHeadingStyle, marginBottom: 8 }}>키워드</span>
-              <p style={{ margin: 0, fontSize: 16, fontWeight: 700, lineHeight: 1.8, color: sc2, whiteSpace: 'normal', wordBreak: 'break-word' }}>
+              <p style={{ margin: 0, fontSize: 16, fontWeight: 700, lineHeight: 1.4, color: sc2, whiteSpace: 'normal', wordBreak: 'break-word' }}>
                 {tags.map((tag) => `#${tag}`).join('  ')}
               </p>
             </div>
