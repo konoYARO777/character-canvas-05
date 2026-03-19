@@ -138,7 +138,7 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
           <div style={{ borderTop: dividerStyle, paddingTop: 20 }}>
             {storiesWithContent.map((story, i) =>
               <div key={i} style={{ marginBottom: i < storiesWithContent.length - 1 ? 20 : 0 }}>
-                <h3 style={{ fontSize: 16, fontWeight: 700, fontFamily: "'Paperozi', sans-serif", color: pc, marginBottom: 6 }}>{story.title}</h3>
+                <h3 style={{ fontSize: 14, fontWeight: 600, fontFamily: "'Paperozi', sans-serif", textTransform: 'uppercase', letterSpacing: '0.05em', color: pc, marginBottom: 6 }}>{story.title}</h3>
                 <p style={{ fontSize: 13, lineHeight: 1.7, color: sc2, whiteSpace: 'pre-wrap', wordBreak: 'break-word', overflowWrap: 'break-word' }}>{story.content}</p>
               </div>
             )}

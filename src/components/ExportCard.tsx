@@ -185,7 +185,7 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
             <div style={{ borderTop: dividerStyle, paddingTop: 22 }}>
               {storiesWithContent.map((story, index) => (
                 <div key={index} style={{ marginBottom: index < storiesWithContent.length - 1 ? 22 : 0 }}>
-                  <h3 style={{ margin: '0 0 8px 0', fontSize: 18, fontWeight: 700, fontFamily: "'Paperozi', sans-serif", lineHeight: 1.4, color: pc }}>{story.title}</h3>
+                  <h3 style={{ ...sectionHeadingStyle, margin: '0 0 8px 0' }}>{story.title}</h3>
                   <p style={{ margin: 0, fontSize: 14, fontWeight: 400, color: sc2, ...textStyle }}>{story.content}</p>
                 </div>
               ))}
