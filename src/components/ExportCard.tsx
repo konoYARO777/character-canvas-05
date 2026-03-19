@@ -127,29 +127,9 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
           {tags.length > 0 && (
             <div style={{ marginTop: 14, padding: 16, border: '2px dashed #f4f4f5', borderRadius: 8 }}>
               <span style={{ ...sectionHeadingStyle, color: data.primaryColor }}>키워드</span>
-              {tags.map((tag, index) => (
-                <span
-                  key={index}
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    height: 28,
-                    padding: '0 12px',
-                    background: data.primaryColor,
-                    color: '#ffffff',
-                    borderRadius: 999,
-                    fontSize: 12,
-                    fontWeight: 700,
-                    lineHeight: 1,
-                    verticalAlign: 'middle',
-                    marginRight: 8,
-                    marginBottom: 8,
-                  }}
-                >
-                  {tag}
-                </span>
-              ))}
+              <p style={{ margin: 0, fontSize: 13, fontWeight: 600, lineHeight: 1.8, color: data.primaryColor, whiteSpace: 'normal', wordBreak: 'break-word' }}>
+                {tags.map((tag) => `#${tag}`).join('  ')}
+              </p>
             </div>
           )}
         </div>
