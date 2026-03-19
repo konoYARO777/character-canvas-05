@@ -16,6 +16,7 @@ const EXPORT_WIDTH = 1200;
 const EXPORT_PADDING = 48;
 const EXPORT_GAP = 32;
 const LEFT_COLUMN_WIDTH = 420;
+const BODY_HEIGHT = 1008;
 
 const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) => {
   const tags = data.keywords.split(',').map((tag) => tag.trim()).filter(Boolean);
@@ -85,7 +86,7 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
         }}
       >
         <div style={{ display: 'block' }}>
-          <div style={{ width: LEFT_COLUMN_WIDTH, height: 1008, background: '#f4f4f5', borderRadius: 8, overflow: 'hidden', outline: '1px solid rgba(0,0,0,0.05)', outlineOffset: -1, textAlign: 'center' }}>
+          <div style={{ width: LEFT_COLUMN_WIDTH, height: BODY_HEIGHT, background: dc, borderRadius: 8, overflow: 'hidden', outline: '1px solid rgba(0,0,0,0.05)', outlineOffset: -1, textAlign: 'center' }}>
             {data.bodyImage ? (
               <img src={data.bodyImage} alt="전신" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
             ) : (
@@ -154,7 +155,7 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
           </div>
 
           <div style={{ marginBottom: 28 }}>
-            <span style={{ display: 'block', fontSize: 11, fontWeight: 700, fontFamily: "'Paperozi', sans-serif", textTransform: 'uppercase', letterSpacing: '0.05em', color: pc, marginBottom: 12 }}>갤러리</span>
+            <span style={{ ...sectionHeadingStyle, fontSize: 14, marginBottom: 12 }}>갤러리</span>
             <div className="gallery-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', columnGap: 16, rowGap: 16 }}>
               {gallerySlots.map((image, index) => (
                 <div key={index} style={{ width: '100%', height: 318, background: '#f4f4f5', borderRadius: 8, overflow: 'hidden', outline: '1px solid rgba(0,0,0,0.05)', outlineOffset: -1 }}>
