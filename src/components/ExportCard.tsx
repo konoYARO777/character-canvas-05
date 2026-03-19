@@ -16,7 +16,6 @@ const EXPORT_WIDTH = 1200;
 const EXPORT_PADDING = 48;
 const EXPORT_GAP = 32;
 const LEFT_COLUMN_WIDTH = 420;
-const BODY_HEIGHT = 1008;
 
 const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) => {
   const tags = data.keywords.split(',').map((tag) => tag.trim()).filter(Boolean);
@@ -81,12 +80,14 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
           maxWidth: '100%',
           display: 'grid',
           gridTemplateColumns: `${LEFT_COLUMN_WIDTH}px minmax(0, 1fr)`,
+          gridTemplateRows: 'auto auto',
           columnGap: EXPORT_GAP,
           alignItems: 'start',
         }}
       >
-        <div style={{ display: 'block' }}>
-          <div style={{ width: LEFT_COLUMN_WIDTH, height: BODY_HEIGHT, background: dc, borderRadius: 8, overflow: 'hidden', outline: '1px solid rgba(0,0,0,0.05)', outlineOffset: -1, textAlign: 'center' }}>
+        {/* Row 1 Left: Body Image */}
+        <div style={{ gridColumn: 1, gridRow: 1, paddingBottom: 18 }}>
+          <div style={{ width: LEFT_COLUMN_WIDTH, height: '100%', minHeight: 1008, background: dc, borderRadius: 8, overflow: 'hidden', outline: '1px solid rgba(0,0,0,0.05)', outlineOffset: -1, textAlign: 'center' }}>
             {data.bodyImage ? (
               <img src={data.bodyImage} alt="전신" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
             ) : (
@@ -95,34 +96,10 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
               </div>
             )}
           </div>
-
-          <div style={{ marginTop: 18, padding: '16px 0', borderTop: dividerStyle, borderBottom: dividerStyle }}>
-            <span style={{ ...sectionHeadingStyle }}>캐릭터 색상</span>
-            {([
-              [data.characterColors.hair, '머리'],
-              [data.characterColors.eye1, '눈1'],
-              [data.characterColors.eye2, '눈2'],
-              [data.characterColors.skin, '피부'],
-              [data.characterColors.other, '기타'],
-            ] as const).map(([color, label], index) => (
-              <div key={index} style={{ display: 'inline-block', textAlign: 'center', marginRight: 10 }}>
-                <div style={{ width: 36, height: 36, borderRadius: '50%', background: color, border: '2px solid #fff', boxShadow: '0 1px 4px rgba(0,0,0,0.15)', margin: '0 auto' }} />
-                <span style={{ display: 'block', marginTop: 2, fontSize: 11, fontWeight: 500, color: sc2 }}>{label}</span>
-              </div>
-            ))}
-          </div>
-
-          {tags.length > 0 && (
-            <div style={{ marginTop: 14, padding: '16px 0', borderTop: dividerStyle, borderBottom: dividerStyle, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-              <span style={{ ...sectionHeadingStyle }}>키워드</span>
-              <p style={{ margin: 0, fontSize: 16, fontWeight: 700, lineHeight: 1.8, color: sc2, whiteSpace: 'normal', wordBreak: 'break-word' }}>
-                {tags.map((tag) => `#${tag}`).join('  ')}
-              </p>
-            </div>
-          )}
         </div>
 
-        <div style={{ display: 'block', minWidth: 0 }}>
+        {/* Row 1 Right: Header + Stats + Gallery */}
+        <div style={{ gridColumn: 2, gridRow: 1, display: 'flex', flexDirection: 'column', minWidth: 0, paddingBottom: 18 }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 140px', columnGap: 24, alignItems: 'start', marginBottom: 28 }}>
             <div style={{ minWidth: 0 }}>
               <h2 style={{ margin: 0, display: 'block', fontSize: 58, fontWeight: 800, fontFamily: "'Paperozi', sans-serif", letterSpacing: '-0.03em', textTransform: 'uppercase', lineHeight: 1.2, color: pc, marginBottom: 10 }}>
@@ -154,7 +131,7 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
             ))}
           </div>
 
-          <div style={{ marginBottom: 28 }}>
+          <div style={{ flex: 1 }}>
             <span style={{ ...sectionHeadingStyle, fontSize: 14, marginBottom: 12 }}>갤러리</span>
             <div className="gallery-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', columnGap: 16, rowGap: 16 }}>
               {gallerySlots.map((image, index) => (
@@ -164,16 +141,47 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
               ))}
             </div>
           </div>
+        </div>
 
+        {/* Row 2 Left: Character Colors + Keywords */}
+        <div style={{ gridColumn: 1, gridRow: 2, display: 'flex', flexDirection: 'column' }}>
+          <div style={{ padding: '16px 0', borderTop: dividerStyle }}>
+            <span style={{ ...sectionHeadingStyle }}>캐릭터 색상</span>
+            {([
+              [data.characterColors.hair, '머리'],
+              [data.characterColors.eye1, '눈1'],
+              [data.characterColors.eye2, '눈2'],
+              [data.characterColors.skin, '피부'],
+              [data.characterColors.other, '기타'],
+            ] as const).map(([color, label], index) => (
+              <div key={index} style={{ display: 'inline-block', textAlign: 'center', marginRight: 10 }}>
+                <div style={{ width: 36, height: 36, borderRadius: '50%', background: color, border: '2px solid #fff', boxShadow: '0 1px 4px rgba(0,0,0,0.15)', margin: '0 auto' }} />
+                <span style={{ display: 'block', marginTop: 2, fontSize: 11, fontWeight: 500, color: sc2 }}>{label}</span>
+              </div>
+            ))}
+          </div>
+
+          {tags.length > 0 && (
+            <div style={{ padding: '16px 0', borderTop: dividerStyle, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+              <span style={{ ...sectionHeadingStyle }}>키워드</span>
+              <p style={{ margin: 0, fontSize: 16, fontWeight: 700, lineHeight: 1.8, color: sc2, whiteSpace: 'normal', wordBreak: 'break-word' }}>
+                {tags.map((tag) => `#${tag}`).join('  ')}
+              </p>
+            </div>
+          )}
+        </div>
+
+        {/* Row 2 Right: Personality + Stories + Footer */}
+        <div style={{ gridColumn: 2, gridRow: 2, display: 'flex', flexDirection: 'column', gap: 22, minWidth: 0 }}>
           {hasPersonality && (
-            <div style={{ borderTop: dividerStyle, paddingTop: 22, marginBottom: 22 }}>
+            <div style={{ borderTop: dividerStyle, paddingTop: 22 }}>
               <h3 style={{ margin: '0 0 8px 0', fontSize: 18, fontWeight: 700, fontFamily: "'Paperozi', sans-serif", lineHeight: 1.4, color: pc }}>성격</h3>
               <p style={{ margin: 0, fontSize: 14, fontWeight: 400, color: sc2, ...textStyle }}>{data.personality}</p>
             </div>
           )}
 
           {storiesWithContent.length > 0 && (
-            <div style={{ borderTop: dividerStyle, paddingTop: 22, marginBottom: 22 }}>
+            <div style={{ borderTop: dividerStyle, paddingTop: 22 }}>
               {storiesWithContent.map((story, index) => (
                 <div key={index} style={{ marginBottom: index < storiesWithContent.length - 1 ? 22 : 0 }}>
                   <h3 style={{ margin: '0 0 8px 0', fontSize: 18, fontWeight: 700, fontFamily: "'Paperozi', sans-serif", lineHeight: 1.4, color: pc }}>{story.title}</h3>
@@ -183,7 +191,7 @@ const ExportCard = forwardRef<HTMLDivElement, ExportCardProps>(({ data }, ref) =
             </div>
           )}
 
-          <div style={{ display: 'grid', gridTemplateColumns: credits.length > 0 ? '1fr auto' : '1fr', columnGap: 16, alignItems: 'end', paddingTop: 24, borderTop: dividerStyle }}>
+          <div style={{ marginTop: 'auto', paddingTop: 24, borderTop: dividerStyle, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
             <span style={{ display: 'block', fontSize: 10, fontWeight: 500, color: '#d4d4d8', fontFamily: 'monospace', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
               Generated via Archetype Protocol // {new Date().getFullYear()}
             </span>
