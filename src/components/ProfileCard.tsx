@@ -23,7 +23,6 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
   const dc = data.dividerColor;
   const bgTint = hexToRgba(data.secondaryColor, 0.2);
   const dividerStyle = `1px solid ${dc}`;
-  const BODY_HEIGHT = 720;
 
   return (
     <div
@@ -32,7 +31,8 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
         width: 800,
         display: 'grid',
         gridTemplateColumns: '300px 1fr',
-        gap: 28,
+        gridTemplateRows: 'auto auto',
+        columnGap: 28,
         padding: 36,
         background: bgTint,
         position: 'relative',
@@ -43,44 +43,18 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
         color: '#09090b'
       }}>
 
-      {/* Left Column */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-        <div style={{ height: BODY_HEIGHT, background: dc, borderRadius: 8, overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', outline: '1px solid rgba(0,0,0,0.05)', outlineOffset: -1 }}>
+      {/* Row 1 Left: Body Image */}
+      <div style={{ gridColumn: 1, gridRow: 1, paddingBottom: 16 }}>
+        <div style={{ height: '100%', minHeight: 720, background: dc, borderRadius: 8, overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', outline: '1px solid rgba(0,0,0,0.05)', outlineOffset: -1 }}>
           {data.bodyImage ?
             <img src={data.bodyImage} alt="전신" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} /> :
             <span style={{ fontSize: 10, color: '#a1a1aa', textTransform: 'uppercase', letterSpacing: '0.1em' }}>전신 이미지</span>
           }
         </div>
-
-        <div style={{ padding: '14px 0', borderTop: dividerStyle, borderBottom: dividerStyle }}>
-          <span style={{ fontSize: 14, fontWeight: 600, fontFamily: "'Paperozi', sans-serif", textTransform: 'uppercase', letterSpacing: '0.05em', color: pc }}>캐릭터 색상</span>
-          <div style={{ display: 'flex', gap: 8, marginTop: 8 }}>
-            {([
-              [data.characterColors.hair, '머리'],
-              [data.characterColors.eye1, '눈1'],
-              [data.characterColors.eye2, '눈2'],
-              [data.characterColors.skin, '피부'],
-              [data.characterColors.other, '기타']] as const).map(([color, label], i) =>
-              <div key={i} style={{ textAlign: 'center' }}>
-                <div style={{ width: 32, height: 32, borderRadius: '50%', background: color, border: '2px solid #fff', boxShadow: '0 1px 4px rgba(0,0,0,0.15)' }} />
-                <span style={{ fontSize: 11, fontWeight: 500, color: sc2, marginTop: 1, display: 'block' }}>{label}</span>
-              </div>
-            )}
-          </div>
-        </div>
-
-        {tags.length > 0 &&
-          <div style={{ padding: '14px 0', borderTop: dividerStyle, borderBottom: dividerStyle, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-            <span style={{ fontSize: 14, fontWeight: 600, fontFamily: "'Paperozi', sans-serif", textTransform: 'uppercase', letterSpacing: '0.05em', color: pc }}>키워드</span>
-            <p style={{ marginTop: 8, fontSize: 15, fontWeight: 700, lineHeight: 1.8, color: sc2, whiteSpace: 'normal', wordBreak: 'break-word' }}>
-              {tags.map((tag) => `#${tag}`).join('  ')}
-            </p>
-          </div>
-        }
       </div>
 
-      {/* Right Column */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+      {/* Row 1 Right: Header + Stats + Gallery */}
+      <div style={{ gridColumn: 2, gridRow: 1, display: 'flex', flexDirection: 'column', gap: 24, paddingBottom: 16 }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
           <div>
             <h2 style={{ fontSize: 44, fontWeight: 800, fontFamily: "'Paperozi', sans-serif", letterSpacing: '-0.03em', textTransform: 'uppercase', lineHeight: 1.1, color: pc }}>
@@ -119,7 +93,39 @@ const ProfileCard = forwardRef<HTMLDivElement, ProfileCardProps>(({ data }, ref)
             )}
           </div>
         </div>
+      </div>
 
+      {/* Row 2 Left: Character Colors + Keywords */}
+      <div style={{ gridColumn: 1, gridRow: 2, display: 'flex', flexDirection: 'column' }}>
+        <div style={{ padding: '14px 0', borderTop: dividerStyle }}>
+          <span style={{ fontSize: 14, fontWeight: 600, fontFamily: "'Paperozi', sans-serif", textTransform: 'uppercase', letterSpacing: '0.05em', color: pc }}>캐릭터 색상</span>
+          <div style={{ display: 'flex', gap: 8, marginTop: 8 }}>
+            {([
+              [data.characterColors.hair, '머리'],
+              [data.characterColors.eye1, '눈1'],
+              [data.characterColors.eye2, '눈2'],
+              [data.characterColors.skin, '피부'],
+              [data.characterColors.other, '기타']] as const).map(([color, label], i) =>
+              <div key={i} style={{ textAlign: 'center' }}>
+                <div style={{ width: 32, height: 32, borderRadius: '50%', background: color, border: '2px solid #fff', boxShadow: '0 1px 4px rgba(0,0,0,0.15)' }} />
+                <span style={{ fontSize: 11, fontWeight: 500, color: sc2, marginTop: 1, display: 'block' }}>{label}</span>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {tags.length > 0 &&
+          <div style={{ padding: '14px 0', borderTop: dividerStyle, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <span style={{ fontSize: 14, fontWeight: 600, fontFamily: "'Paperozi', sans-serif", textTransform: 'uppercase', letterSpacing: '0.05em', color: pc }}>키워드</span>
+            <p style={{ marginTop: 8, fontSize: 15, fontWeight: 700, lineHeight: 1.8, color: sc2, whiteSpace: 'normal', wordBreak: 'break-word' }}>
+              {tags.map((tag) => `#${tag}`).join('  ')}
+            </p>
+          </div>
+        }
+      </div>
+
+      {/* Row 2 Right: Personality + Stories + Footer */}
+      <div style={{ gridColumn: 2, gridRow: 2, display: 'flex', flexDirection: 'column', gap: 24 }}>
         {hasPersonality &&
           <div style={{ borderTop: dividerStyle, paddingTop: 20 }}>
             <h3 style={{ fontSize: 16, fontWeight: 700, fontFamily: "'Paperozi', sans-serif", color: pc, marginBottom: 6 }}>성격</h3>
